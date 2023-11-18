@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      milestone2 &middot; Projet IFT6758 Blog partie II
+    
+  </title>
+
+  
+  <link rel="canonical" href="http://localhost:4000/2023/11/13/milestone2/">
+  
+
+  <link rel="stylesheet" href="http://localhost:4000/public/css/poole.css">
+  <link rel="stylesheet" href="http://localhost:4000/public/css/syntax.css">
+  <link rel="stylesheet" href="http://localhost:4000/public/css/lanyon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="http://localhost:4000/public/favicon.ico">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://localhost:4000/atom.xml">
+
+  
+</head>
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>A reserved <a href="https://jekyllrb.com" target="_blank">Jekyll</a> theme that places the utmost gravity on content with a hidden drawer. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="http://localhost:4000/">Home</a>
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://localhost:4000/about/">About</a>
+        
+      
+    
+      
+    
+
+    <span class="sidebar-nav-item">Currently v1.1.0</span>
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      &copy; 2023. All rights reserved.
+    </p>
+  </div>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="/" title="Home">Projet IFT6758 Blog partie II</a>
+            <small>A template based on the Lanyon Jekyll theme</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">milestone2</h1>
+  <span class="post-date">13 Nov 2023</span>
+  <h2 id="partie-2--ingénierie-des-caractéristiques-i">Partie 2:  Ingénierie des caractéristiques I</h2>
+<p><strong>Question 1</strong><br />
+<img src="../assets/Histogram_Distance.png" alt="Histogramme des tirs et des buts par distance du filet " /></p>
+
+<p>Sur cet histogramme, il est possible de réaliser que la majorité des tirs et des buts proviennent d’une distance circonscrite entre 0 et 60 pieds. Il semble y avoir une distance où il y a plus de tirs et plus de but dans les environs de 10-15 pieds, puis plus on s’éloigne de cette distance, plus le nombre de buts diminue.</p>
+
+<p><img src="../assets/Histogram_Angle.png" alt="Histogramme des tirs et des buts par angle par rapport au but" /></p>
+
+<p>Sur cet histogramme, en un coup d’œil, nous pouvons déceler qu’il semble y avoir 3 pics pour les sites de prédilection pour les tirs, soit 90, 60 et 45 degrés. À garder en tête que nous avons fait une échelle de 0 à 90 donc les valeurs inférieures à 90 représentent les valeurs pour les deux côtés de la patinoire. Nous avons préféré ce mode de représentation parce que les angles opposés (par exemple 45 et 135) représentent la même visualisation du filet et l’aire du filet disponible pour le tir (avec ou sans gardien). Il est facile de voir que plus l’angle diminue à partir de 90 degré, plus le nombre de buts diminue. Plus il y a un angle, moins de filet disponible et visible pour un but est présent lorsqu’un gardien est positionné correctement.</p>
+
+<p><img src="../assets/2DHistogram_Distance.png" alt="Histogramme 2D démontrant le lien entre la distance et l’angle" /></p>
+
+<p>Il est possible de voir que la majorité des tirs sont produits le plus prêt du filet possible et à un angle se rapprochant le plus de 90 degré parce que ça semble être des caractéristiques liées au taux de succès pour marquer un but. Cependant, il faudra analyser plus parce que le taux de buts plus élevés avec ses caractéristiques pourraient être seulement dû à la fréquence plus augmentée de ces évènements.</p>
+
+<p><strong>Question 2</strong><br />	
+«««&lt; HEAD</p>
+
+<p><img src="../assets/GoalRatebyDistanceBin.png" alt="Histogramme du taux de buts par groupe de distance en pieds" />			
+<img src="../assets/GoalRatebyDistanceBinExludEmptynet.png" alt="Histogramme du taux de buts par groupe de distance en pieds" /></p>
+
+<p>En regardant le taux de buts par groupe de distance en pieds, il est possible de voir une tendance que les tirs les plus dangereux semblent être ceux effectués près du filet. La recrudescence des buts à partir de la distance de 100 pieds est due aux buts dans les filets déserts et aux événements mal classés. Effectivement, comme peu de tirs sont effectués à cette distance quand le gardien en en position dans le but, le taux de buts à ces distances sont expliqués par les buts en filet désert. On peut réaliser dans la figure de droite en retirant ces buts que le taux de buts diminue plus on s’éloigne du filet.</p>
+
+<p><img src="../assets/GoalRatebyAngleBin.png" alt="Histogramme du taux de buts par angle par rapport au filet" /></p>
+
+<p>En un simple coup d’œil, il est possible de voir que plus on s’éloigne de l’angle de 90 degré, moins les tirs sont efficaces pour marquer des buts comme le taux de buts diminue. Cependant, l’effet est moins marqué que celui de la distance et il y a un effet plateau entre 70 et 30 degrés où les taux sont similaires. À noter encore que les groupes d’angle sous les 90 degré représente les angles à gauche et à droite du gardien, alors l’importance d’être près du 90 degré ici est minimisée.</p>
+
+<p><img src="../assets/EmptyNetvsNon-EmptyNet.png" alt="Histogramme en transformation log des buts marqués en filet désert ou non" /></p>
+
+<p>Ici, nous avons dû faire une transformation en base logarithmique pour mieux déceler et comparer les deux entités parce que la différence en termes de nombre d’événements entre les deux catégories est trop importante. Il est possible de voir que le nombre de buts en filet désert est assez constant à travers toutes les distances et dépasse le nombre de buts marqués avec un gardien présent à environ 70 pieds du filet. Il est possible de penser que les événements où un but est marqué à une distance plus grande que 100 pieds lorsque le gardien est présent sont rarissimes et qu’une partie d’entre eux ont des erreurs au niveau de l’enregistrement de leurs coordonnées dans le jeu de données initial.</p>
+
+<p>Pour identifier les événements qui étaient possiblement mal classés en termes de coordonnées, il suffisait d’utiliser l’intuition de nos connaissances de hockey et de celle acquise avec la visualisation des données en observant les buts réalisés avec un gardien présent à des distances plus hautes. Voici un exemple d’évènements repéré:	
+0,2,2015-10-08T00:21:09Z,Toronto Maple Leafs,GOAL,-73.0,-1.0,Deflected,False,Power Play,James van Riemsdyk,Carey Price,2015020001,regular</p>
+
+<p>En 2015, en deuxième période, les Maple Leafs tiraient sur le but (89,0) et donc un tir dévié sur le power play provenait le plus probablement des coordonnées (73, -1). Comme on peut voir sur la photo prise d’une vidéo youtube d’un récapitulatif de la chaîne TVA sport, James van Riemsdyk est le joueur positionné directement devant le gardien Carey Price.</p>
+
+<h2 id="partie-3-modèles-de-base">Partie 3: Modèles de base</h2>
+
+<p>La précision du modèle est de 90% d’accuracy pour un modèle de régression logistique de base ce qui me semble trop élevé pour un classifieur de base basé seulement sur la distance. Un problème que je vois pourrait être que le classifieur ne fait qu’utiliser le taux de buts par distance, qui diminue plus la distance augmente, pour faire sa prédiction. Comme les buts sont relativement rares, le modèle n’a qu’à prédire légèrement plus de buts que le taux de buts par distance pour avoir une performance adéquate. Cependant, ce type de modèle, si utilisé sur d’autres données va faire des erreurs par exemple s’il y a un tir effectué de très loin vers un filet désert, des tirs de la ligne bleue lors d’avantage numérique, d’autant plus à 5 contre 3 etc. De plus, si on veut un modèle de plus en plus précis en analysant plus de données, la composante binaire nous intéresse moins que la probabilité que le tir soit un but.</p>
+
+<p><img src="../assets/Image1.png" alt="ROC curves for all the models" /></p>
+
+<p>Il est possible de voir qu’entre les caractéristiques de distance et d’angle, celle de distance est plus discriminante pour savoir si un tir sera un but ou non. Nous avions déjà développé cette intuition en regardant les graphiques de taux de buts par distance et par angle. Après 90 degrés, le taux de buts par angle frappe un plateau de 70 à 30 degrés tandis que le taux de buts par distance ne cesse de diminuer plus la distance augmente. On peut voir que lorsqu’on combine l’angle et la distance, le modèle performe légèrement mieux en terme de discrimination.</p>
+
+<p><img src="../assets/Image2.png" alt="Graphique du taux de buts par la probabilité du modèle en percentile" /></p>
+
+<p>Il est possible de voir encore une fois la même tendance, c’est-à-dire que la prédiction par le modèle est meilleure en termes de percentile en considérant le taux de but par distance que par angle pour les mêmes raisons qu’évoqué plus tôt. Encore une fois le modèle combiné performe légèrement mieux que celui de la distance seul.</p>
+
+<p><img src="../assets/Image3.png" alt="Graphique du taux de buts par la probabilité du modèle en percentile" /></p>
+
+<p>Il est possible de voir encore une fois la même tendance, c’est-à-dire que la prédiction par le modèle est meilleure en termes de percentile en considérant le taux de but par distance que par angle pour les mêmes raisons qu’évoqué plus tôt. Encore une fois le modèle combiné performe légèrement mieux que celui de la distance seul. Le modèle par angle offre un performance légèrement meilleure que le modèle aléatoire de base.</p>
+
+<p><img src="../assets/Image4.png" alt="Graphique du taux de buts par la probabilité du modèle en percentile" /></p>
+
+<p>On voit qu’ajouter une variable pour que notre modèle soit plus précis fonctionne. Cependant, comme nous n’avons que fait des modèles de bases, nous atteignons à peine le 0,4 de probabilité prédite moyenne avec notre meilleur modèle, soit celui de la distance et de l’angle combiné. Il faudra très probablement inclure plus de caractéristiques plus complexes dans les prochaines étapes du projet pour faire des modèles se rapprochant de la ligne de la calibration parfaite. 	
+**Lien vers lien vers l’expérience qui stocke l’artefact DataFrame filtré pour le jeu spécifié:
+<a href="https://www.comet.com/francis75/nhl-project/ae00b99b5c464daba590a450f1c7441b">LienExperiance</a></p>
+
+<h2 id="partie-4-ingénierie-des-caractéristiques-2">Partie 4: Ingénierie des caractéristiques 2</h2>
+
+<p><strong>Liste des caractéristiques créés</strong><br /></p>
+<ol>
+  <li>game_seconds: Temps ecoulé depuis debut de la periode en secondes</li>
+  <li>about.period: Periode de jeu</li>
+  <li>shot_distance: Distance de tir</li>
+  <li>shot_angle: Angle de tir</li>
+  <li>last_event_type: Dernier événement avant celui actuel</li>
+  <li>last_event_y: Position y du dernier événement</li>
+  <li>last_event_x: Position x du dernier événement</li>
+  <li>time_since_last_event: Temps ecoulé depuis le dernier événement en secondes</li>
+  <li>distance_from_last_event: Distance séparant l’événement actuel de l’événement précedent</li>
+  <li>is_rebound: Valeur booléene indiquant si l’événement est un tir</li>
+  <li>shot_angle_change: Changement d’angle après un tir</li>
+  <li>event_speed: Vitesse de l’événement en cours</li>
+  <li>power_play_timer: Temps écoulé depuis le début du jeu de puissance en secondes</li>
+  <li>friendly skaters on ice: Le nombre de patineurs dans l’équipe actuelle</li>
+  <li>Opponents skaters on ice: Le nombre de patineurs de l’équipe adverse</li>
+</ol>
+
+<p>**Lien vers lien vers l’expérience qui stocke l’artefact DataFrame filtré pour le jeu spécifié:
+<a href="https://www.comet.com/francis75/feature-engineering-data/cb1bac468bcd4f23b0f6fb8a25e17af2">LienExperiance</a></p>
+
+<h2 id="partie-5--modèles-avancés">Partie 5 : Modèles avancés</h2>
+
+<p><strong>Question 1:</strong><br /></p>
+
+<p>Dans cette partie, nous avons utilisé un modèle XGBoost avec les hyperparamètres par défaut qui sont définis par la bibliothèque XGBoost elle-même. Notez que nous utilisons XGBClassifier sans aucun argument, ce qui signifie que nous utilisons ceux par défaut.</p>
+
+<p>Les résultats trouvés :
+<img src="../assets/Q1XGBoost_Diag1.png" alt="Receiver Operating Characteristic" />
+<img src="../assets/Q1XGBoost_Diag2.png" alt="Goal Rate vs. Shot Probability Model Percentile" />
+<img src="../assets/Q1XGBoost_Diag3.png" alt="shap_corr_matCumulative Goal Proportion vs. Shot Probability Model Percentilerix" />
+<img src="../assets/Q1XGBoost_G4.png" alt="Reliability Diagram (Calibration Curve) for Model" /></p>
+
+<p>On constate que qu’il n’y a pas de grande différence avec le modéle de regression logistique entrainé sur distance et angle. Mais au niveau du diagramme de fiabilité le modéle XGBoot qui oscille avant d’atteindre une valeur maximal.</p>
+
+<p><a href="https://www.comet.com/francis75/nhl-projectvf/6b43466fcbd4409cb29e4a5f6f1a00bf">ExperianceXGBoostPartI</a></p>
+
+<p><strong>Question 2:</strong><br /></p>
+
+<p>Préparation des données :</p>
+
+<ol>
+  <li>
+    <p>Encoder des variables catégorielles : L’algorithme XGBoost fonctionne avec des types numériques et vu que notre dataset contient des valeurs catégoriallles on a la techniques encodage leave on out.</p>
+  </li>
+  <li>
+    <p>Nettoyez les données :</p>
+  </li>
+</ol>
+
+<p>Pour les valeurs manquantes : nous avons eu le résultat suivant :</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                                              <span class="n">Missing</span> <span class="n">Values</span>  <span class="n">Percentage</span>
+<span class="n">distance_to_target_goal</span>                                   <span class="mi">17</span>    <span class="mf">0.005559</span>
+<span class="n">angle_to_target_goal</span>                                      <span class="mi">17</span>    <span class="mf">0.005559</span>
+<span class="n">about</span><span class="p">.</span><span class="n">period</span>                                               <span class="mi">0</span>    <span class="mf">0.000000</span>
+<span class="n">game_seconds</span>                                               <span class="mi">0</span>    <span class="mf">0.000000</span>
+<span class="n">coordinates</span><span class="p">.</span><span class="n">x</span>                                             <span class="mi">16</span>    <span class="mf">0.005232</span>
+<span class="n">coordinates</span><span class="p">.</span><span class="n">y</span>                                             <span class="mi">15</span>    <span class="mf">0.004905</span>
+<span class="n">prev_coordinates</span><span class="p">.</span><span class="n">x</span>                                      <span class="mi">4157</span>    <span class="mf">1.359323</span>
+<span class="n">prev_coordinates</span><span class="p">.</span><span class="n">y</span>                                      <span class="mi">4156</span>    <span class="mf">1.358996</span>
+<span class="n">time_since_last_event</span>                                      <span class="mi">0</span>    <span class="mf">0.000000</span>
+<span class="n">distance_from_last_event</span>                                <span class="mi">4169</span>    <span class="mf">1.363247</span>
+<span class="n">is_rebound</span>                                                 <span class="mi">0</span>    <span class="mf">0.000000</span>
+<span class="n">shot_angle_change</span>                                         <span class="mi">10</span>    <span class="mf">0.003270</span>
+<span class="n">event_speed</span>                                            <span class="mi">10783</span>    <span class="mf">3.525999</span>
+<span class="n">shot_or_goal</span>                                               <span class="mi">0</span>    <span class="mf">0.000000</span>
+<span class="n">prev_result</span><span class="p">.</span><span class="n">eventTypeId_smoothed_loo_encoded</span>               <span class="mi">0</span>    <span class="mf">0.000000</span>
+<span class="n">result</span><span class="p">.</span><span class="n">secondaryType_smoothed_loo_encoded</span>                 <span class="mi">42</span>    <span class="mf">0.013734</span>
+</code></pre></div></div>
+<p>On voit une variation de pourcentage des données manquantes pour les variables :
+Les variables qui n’ont pas de valeurs manquantes :
+shot_or_goal : Aucune valeur manquante (0%)
+time_since_last_event : Aucune valeur manquante (0%)
+is_rebound : Aucune valeur manquante (0%)
+about.period : Aucune valeur manquante (0%)
+game_seconds : Aucune valeur manquante (0%)
+prev_result.eventTypeId_smoothed_loo_encoded : Aucune valeur manquante (0%)</p>
+
+<p>Les variables qui ont des valeurs manquantes trés faible :
+distance_to_target_goal : 17 valeurs manquantes (0.005559%)
+angle_to_target_goal : 17 valeurs manquantes (0.005559%)
+coordinates.x : 16 valeurs manquantes (0.005232%)
+coordinates.y : 15 valeurs manquantes (0.004905%)
+shot_angle_change : 10 valeurs manquantes (0.003270%)
+result.secondaryType_smoothed_loo_encoded : 42 valeurs manquantes (0.013734%)</p>
+
+<p>Les variables qui ont des valeurs manquantes faible :
+distance_from_last_event : 4169 valeurs manquantes (1.363247%)
+prev_coordinates.x : 4157 valeurs manquantes (1.359323%)
+prev_coordinates.y : 4156 valeurs manquantes (1.358996%)</p>
+
+<p>Pour la variable event_speed 3.53% de valeurs manquantes n’est pas négligeable, mais ce n’est pas non plus extrêmement élevé. Et vu qu’on a pas encore etudié l’importance de cette variable pour l’analyse de notre modèle on ne va pas la supprimer : 
+event_speed : 10783 valeurs manquantes (3.525999%)</p>
+
+<p>Nous allons tester en premier temps, XGBoost missing parameter avant de passer à une autre solution.</p>
+
+<ol>
+  <li>Normaliser/standardiser les données :</li>
+</ol>
+
+<p>Vu que XGBoost, en tant qu’algorithme de gradient boosting, n’est généralement pas sensible à l’échelle des caractéristiques et gère bien les caractéristiques avec des échelles différentes, nous n’avons pas effectuer aucune opération pour normaliser nos données.</p>
+
+<ol>
+  <li>Déséquilibre des classes :</li>
+</ol>
+
+<p>Nous avons évaluer l’équilibre de nos étiquettes, et on a eu les résultats suivantes :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">shot_or_goal</span>
+<span class="mi">0</span>    <span class="mi">276782</span>
+<span class="mi">1</span>     <span class="mi">29032</span>
+</code></pre></div></div>
+<p><img src="../assets/EvaluationClasses.png" alt="Évaluation de l'équilibre des classes" /></p>
+
+<p>En regardant les résultats, on peut voir que la classe 0 a 276,782 occurrences tandis que la classe 1 a 29,032 occurrences. Cela indique un déséquilibre entre les deux classes, la classe 0 étant nettement plus fréquente que la classe 1. Donc on va tester en premier temps scale_pos_weight.</p>
+
+<p>Pour la prochaine étape on va essayer de tester plusieurs configurations du modéle XGBoost.</p>
+
+<ol>
+  <li>Configuration du modéle</li>
+</ol>
+
+<p>5.1. Paramètres généraux</p>
+
+<p>Afin déterminer quel booster utiliser. On a utiliser la fonction cross_val_score de scikit-learn. C’est une fonction qui nous a permis d’effectuer une validation croisée k-fold, où l’ensemble de données est divisé en k sous-ensembles (folds), et le modèle est formé et évalué 5 fois, en utilisant à chaque fois un fold différent comme ensemble de test et les folds restants comme ensemble de formation. L’entrainement a été fait avec l’ensemble de données aprés l’utilisation de techniques comme SMOTE et ADASYN.</p>
+
+<p>Nous avons eu les résultats suivants :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Evaluation</span> <span class="k">for</span> <span class="n">gbtree</span><span class="p">:</span>
+<span class="n">Mean</span> <span class="n">accuracy</span><span class="p">:</span> <span class="mf">0.6928195654066989</span>
+<span class="n">Mean</span> <span class="n">precision</span><span class="p">:</span> <span class="mf">0.18660854664748325</span>
+<span class="n">Mean</span> <span class="n">recall</span><span class="p">:</span> <span class="mf">0.6657768673121516</span>
+<span class="n">Mean</span> <span class="n">F1</span><span class="o">-</span><span class="n">score</span><span class="p">:</span> <span class="mf">0.291506349546542</span>
+
+<span class="n">Evaluation</span> <span class="k">for</span> <span class="n">gblinear</span><span class="p">:</span>
+<span class="n">Mean</span> <span class="n">accuracy</span><span class="p">:</span> <span class="mf">0.6492350388355984</span>
+<span class="n">Mean</span> <span class="n">precision</span><span class="p">:</span> <span class="mf">0.16804448927131777</span>
+<span class="n">Mean</span> <span class="n">recall</span><span class="p">:</span> <span class="mf">0.6822700170318263</span>
+<span class="n">Mean</span> <span class="n">F1</span><span class="o">-</span><span class="n">score</span><span class="p">:</span> <span class="mf">0.26945364456039583</span>
+
+<span class="n">Evaluation</span> <span class="k">for</span> <span class="n">dart</span><span class="p">:</span>
+<span class="n">Mean</span> <span class="n">accuracy</span><span class="p">:</span> <span class="mf">0.6928195654066989</span>
+<span class="n">Mean</span> <span class="n">precision</span><span class="p">:</span> <span class="mf">0.18660854664748325</span>
+<span class="n">Mean</span> <span class="n">recall</span><span class="p">:</span> <span class="mf">0.6657768673121516</span>
+<span class="n">Mean</span> <span class="n">F1</span><span class="o">-</span><span class="n">score</span><span class="p">:</span> <span class="mf">0.291506349546542</span>
+
+<span class="n">The</span> <span class="n">best</span> <span class="n">model</span> <span class="n">based</span> <span class="n">on</span> <span class="n">cross</span><span class="o">-</span><span class="n">validation</span> <span class="ow">is</span><span class="p">:</span> <span class="n">gbtree</span>
+<span class="n">Evaluation</span> <span class="n">on</span> <span class="n">the</span> <span class="n">validation</span> <span class="nb">set</span> <span class="k">for</span> <span class="n">the</span> <span class="n">best</span> <span class="n">model</span><span class="p">:</span>
+<span class="n">Accuracy</span><span class="p">:</span> <span class="mf">0.7136994588231447</span>
+<span class="n">Precision</span><span class="p">:</span> <span class="mf">0.18296119661825277</span>
+<span class="n">Recall</span><span class="p">:</span> <span class="mf">0.5809671313027017</span>
+<span class="n">F1</span><span class="o">-</span><span class="n">score</span><span class="p">:</span> <span class="mf">0.278283806619132</span>
+</code></pre></div></div>
+
+<h1 id="les-résultats-que-nous-avons-obtenus-montrent-que-le-modèle-gbtree-est-celui-qui-a-la-meilleure-performance-globale-avec-des-mesures-dévaluation-élevées-telles-que-laccuracy-la-précision-le-rappel-et-le-f1-score-dun-point-de-vue-global-il-semble-être-un-choix-solide">Les résultats que nous avons obtenus montrent que le modèle gbtree est celui qui a la meilleure performance globale, avec des mesures d’évaluation élevées telles que l’accuracy, la précision, le rappel, et le F1-score. D’un point de vue global, il semble être un choix solide.</h1>
+
+<p><img src="../assets/GoalRatebyDistanceBin.png" alt="Histogramme du taux de buts par groupe de distance en pieds" />			
+<img src="../assets/GoalRatebyDistanceBinExludEmptynet.png" alt="Histogramme du taux de buts par groupe de distance en pieds" /></p>
+
+<p>En regardant le taux de buts par groupe de distance en pieds, il est possible de voir une tendance que les tirs les plus dangereux semblent être ceux effectués près du filet. La recrudescence des buts à partir de la distance de 100 pieds est due aux buts dans les filets déserts et aux événements mal classés. Effectivement, comme peu de tirs sont effectués à cette distance quand le gardien en en position dans le but, le taux de buts à ces distances sont expliqués par les buts en filet désert. On peut réaliser dans la figure de droite en retirant ces buts que le taux de buts diminue plus on s’éloigne du filet.</p>
+
+<p><img src="../assets/GoalRatebyAngleBin.png" alt="Histogramme du taux de buts par angle par rapport au filet" /></p>
+
+<p>En un simple coup d’œil, il est possible de voir que plus on s’éloigne de l’angle de 90 degré, moins les tirs sont efficaces pour marquer des buts comme le taux de buts diminue. Cependant, l’effet est moins marqué que celui de la distance et il y a un effet plateau entre 70 et 30 degrés où les taux sont similaires. À noter encore que les groupes d’angle sous les 90 degré représente les angles à gauche et à droite du gardien, alors l’importance d’être près du 90 degré ici est minimisée.</p>
+
+<p><img src="../assets/EmptyNetvsNon-EmptyNet.png" alt="Histogramme en transformation log des buts marqués en filet désert ou non" /></p>
+
+<p>Ici, nous avons dû faire une transformation en base logarithmique pour mieux déceler et comparer les deux entités parce que la différence en termes de nombre d’événements entre les deux catégories est trop importante. Il est possible de voir que le nombre de buts en filet désert est assez constant à travers toutes les distances et dépasse le nombre de buts marqués avec un gardien présent à environ 70 pieds du filet. Il est possible de penser que les événements où un but est marqué à une distance plus grande que 100 pieds lorsque le gardien est présent sont rarissimes et qu’une partie d’entre eux ont des erreurs au niveau de l’enregistrement de leurs coordonnées dans le jeu de données initial.</p>
+
+<p>Pour identifier les événements qui étaient possiblement mal classés en termes de coordonnées, il suffisait d’utiliser l’intuition de nos connaissances de hockey et de celle acquise avec la visualisation des données en observant les buts réalisés avec un gardien présent à des distances plus hautes. Voici un exemple d’évènements repéré:	
+0,2,2015-10-08T00:21:09Z,Toronto Maple Leafs,GOAL,-73.0,-1.0,Deflected,False,Power Play,James van Riemsdyk,Carey Price,2015020001,regular</p>
+
+<p>En 2015, en deuxième période, les Maple Leafs tiraient sur le but (89,0) et donc un tir dévié sur le power play provenait le plus probablement des coordonnées (73, -1). Comme on peut voir sur la photo prise d’une vidéo youtube d’un récapitulatif de la chaîne TVA sport, James van Riemsdyk est le joueur positionné directement devant le gardien Carey Price.</p>
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <p>9acdaf782465def919acece561c245176ff86683</p>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Cependant, lorsqu’on regarde le modèle gblinear, on remarque que bien que l’accuracy soit raisonnable, les mesures de précision, de rappel, et de F1-score sont significativement plus basses. Cela pourrait indiquer que le modèle linéaire généralisé (gblinear) ne capture peut-être pas aussi bien les relations complexes dans nos données par rapport au modèle basé sur les arbres (gbtree).</p>
+
+<p>5.2. Paramètres pour Tree Booster</p>
+
+<p>XGBoost fournit de nombreux hyperparamètres qui peuvent être ajustés pour améliorer les performances du modèle. Certains hyperparamètres importants sont :</p>
+
+<p>n_estimators : Le nombre de tours de boosting.
+max_degree : La profondeur maximale de chaque arbre.
+learning_rate : La taille de pas utilisée pour les mises à jour de poids.
+subsample : La fraction d’échantillons à utiliser pour chaque cycle de boosting.
+colsample_bytree : La fraction de fonctionnalités à utiliser pour chaque arbre.</p>
+
+<p>Expériance I : (param_dist avec une profondeur maximale plus faible et un taux d’apprentissage plus élevé) :</p>
+
+<p>«««&lt; HEAD</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Best</span> <span class="n">hyperparameters</span><span class="p">:{</span><span class="sh">'</span><span class="s">subsample</span><span class="sh">'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="sh">'</span><span class="s">n_estimators</span><span class="sh">'</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span> <span class="sh">'</span><span class="s">max_depth</span><span class="sh">'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="sh">'</span><span class="s">learning_rate</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span> <span class="sh">'</span><span class="s">colsample_bytree</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">}</span>
+</code></pre></div></div>
+
+<p>Performance du modèle sur les données de validation :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Accuracy</span><span class="p">:</span> <span class="mf">0.7113</span>
+<span class="n">Precision</span><span class="p">:</span> <span class="mf">0.6147</span>
+<span class="n">Recall</span><span class="p">:</span> <span class="mf">0.1881</span>
+<span class="n">F1</span><span class="o">-</span><span class="n">score</span><span class="p">:</span> <span class="mf">0.2880</span>
+</code></pre></div></div>
+
+<p>Accuracy : est d’environ 71,13 %. Cela signifie qu’environ 71,13 % des prédictions faites par le modèle sont correctes.</p>
+
+<p>Précision : la précision est d’environ 61,47 %. Cela signifie que lorsque le modèle prédit la classe positive, il est correct dans environ 61,47 % des cas.</p>
+
+<p>Rappel (sensibilité) : Dans notre cas, le rappel est d’environ 18,81 %. Cela signifie que le modèle ne capture qu’environ 18,81 % des cas positifs réels.</p>
+
+<p>Expériance II : (param_dist avec max_depth plus élevé et learning_rate plus bas) :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Best</span> <span class="n">hyperparameters</span><span class="p">:</span> <span class="p">{</span><span class="sh">'</span><span class="s">subsample</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">,</span> <span class="sh">'</span><span class="s">n_estimators</span><span class="sh">'</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="sh">'</span><span class="s">min_child_weight</span><span class="sh">'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="sh">'</span><span class="s">max_depth</span><span class="sh">'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="sh">'</span><span class="s">learning_rate</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="sh">'</span><span class="s">colsample_bytree</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">}</span>
+</code></pre></div></div>
+<p>Performance du modèle sur les données de validation :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Accuracy</span><span class="p">:</span> <span class="mf">0.8806</span>
+<span class="n">Precision</span><span class="p">:</span> <span class="mf">0.1561</span>
+<span class="n">Recall</span><span class="p">:</span> <span class="mf">0.2742</span>
+<span class="n">F1</span><span class="o">-</span><span class="n">score</span><span class="p">:</span> <span class="mf">0.1989</span>
+</code></pre></div></div>
+<p>Accuracy : est d’environ 88,06 %. Cela signifie qu’environ 88,06 % des prédictions faites par le modèle sont correctes.</p>
+
+<p>Précision : la précision est d’environ 15,61 %. Cela signifie que lorsque le modèle prédit la classe positive, il est correct dans environ 15,61 % des cas.</p>
+
+<p>Rappel (sensibilité) : Dans notre cas, le rappel est d’environ 19,89 %. Cela signifie que le modèle ne capture qu’environ 19,89% des cas positifs réels.</p>
+
+<p>Observations :</p>
+
+<p>Sur la base des deux expériences, il semble que la configuration de l’expérience 2 (max_depth plus élevé, learning_rate plus faible) ait donné de meilleurs résultats sur l’ensemble de validation. Voici quelques informations et ajustements potentiels :</p>
+
+<p>Expérience 1 :</p>
+
+<p>Avantages : Précision plus élevée, ce qui indique un taux de faux positifs plus faible.
+Inconvénients : faible rappel, ce qui signifie un taux de faux négatifs plus élevé. Précision et score F1 modérés.</p>
+
+<p>Expérience 2 :</p>
+
+<p>Avantages : Précision et score F1 plus élevés, ce qui indique un bon équilibre entre la précision et le rappel.
+Inconvénients : précision plus faible, ce qui peut entraîner un plus grand nombre de faux positifs.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">param_subsample</span>  <span class="n">param_colsample_bytree</span>  <span class="n">mean_score</span>
+<span class="mi">0</span>              <span class="mf">0.5</span>                     <span class="mf">0.5</span>    <span class="mf">0.939308</span>
+<span class="mi">1</span>              <span class="mf">0.5</span>                     <span class="mf">0.5</span>    <span class="mf">0.906488</span>
+<span class="mi">2</span>              <span class="mf">0.8</span>                     <span class="mf">1.0</span>    <span class="mf">0.960865</span>
+<span class="mi">3</span>              <span class="mf">1.0</span>                     <span class="mf">0.8</span>    <span class="mf">0.961295</span>
+<span class="mi">4</span>              <span class="mf">1.0</span>                     <span class="mf">0.8</span>    <span class="mf">0.961282</span>
+<span class="mi">5</span>              <span class="mf">1.0</span>                     <span class="mf">0.8</span>    <span class="mf">0.913751</span>
+<span class="mi">6</span>              <span class="mf">1.0</span>                     <span class="mf">1.0</span>    <span class="mf">0.961114</span>
+<span class="mi">7</span>              <span class="mf">0.8</span>                     <span class="mf">0.5</span>    <span class="mf">0.960965</span>
+<span class="mi">8</span>              <span class="mf">0.5</span>                     <span class="mf">0.5</span>    <span class="mf">0.904596</span>
+<span class="mi">9</span>              <span class="mf">0.8</span>                     <span class="mf">1.0</span>    <span class="mf">0.954664</span>
+<span class="n">Best</span> <span class="n">Parameters</span><span class="p">:</span> <span class="p">{</span><span class="sh">'</span><span class="s">subsample</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span> <span class="sh">'</span><span class="s">n_estimators</span><span class="sh">'</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span> <span class="sh">'</span><span class="s">max_depth</span><span class="sh">'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="sh">'</span><span class="s">learning_rate</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span> <span class="sh">'</span><span class="s">colsample_bytree</span><span class="sh">'</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+<span class="n">Best</span> <span class="n">Score</span><span class="p">:</span> <span class="mf">0.9612952029594501</span>
+</code></pre></div></div>
+<p>5.3. Techniques avancées</p>
+
+<p>Pour améliorer encore les performances de notre modèle XGBoost, on a utiliser des techniques avancées telles que :</p>
+
+<p>Early Stopping : arrêtez l’entraînement lorsque l’erreur de validation ne s’améliore pas pendant un certain nombre de tours.</p>
+
+<p>reg_alpha et reg_lambda : Paramètres de régularisation L1 et L2 qui peuvent aider à prévenir le surajustement.</p>
+
+<p>gamma : Paramètre de régularisation qui contrôle si un nœud doit être scindé en fonction de la réduction de perte attendue après la scission.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">param_subsample</span>  <span class="n">param_colsample_bytree</span>  <span class="n">mean_score</span>
+<span class="mi">0</span>              <span class="mf">0.5</span>                     <span class="mf">0.5</span>    <span class="mf">0.939308</span>
+<span class="mi">1</span>              <span class="mf">0.5</span>                     <span class="mf">0.5</span>    <span class="mf">0.906488</span>
+<span class="mi">2</span>              <span class="mf">0.8</span>                     <span class="mf">1.0</span>    <span class="mf">0.960865</span>
+<span class="mi">3</span>              <span class="mf">1.0</span>                     <span class="mf">0.8</span>    <span class="mf">0.961295</span>
+<span class="mi">4</span>              <span class="mf">1.0</span>                     <span class="mf">0.8</span>    <span class="mf">0.961282</span>
+<span class="mi">5</span>              <span class="mf">1.0</span>                     <span class="mf">0.8</span>    <span class="mf">0.913751</span>
+<span class="mi">6</span>              <span class="mf">1.0</span>                     <span class="mf">1.0</span>    <span class="mf">0.961114</span>
+<span class="mi">7</span>              <span class="mf">0.8</span>                     <span class="mf">0.5</span>    <span class="mf">0.960965</span>
+<span class="mi">8</span>              <span class="mf">0.5</span>                     <span class="mf">0.5</span>    <span class="mf">0.904596</span>
+<span class="mi">9</span>              <span class="mf">0.8</span>                     <span class="mf">1.0</span>    <span class="mf">0.954664</span>
+<span class="n">Best</span> <span class="n">Parameters</span><span class="p">:</span> <span class="p">{</span><span class="sh">'</span><span class="s">reg_lambda</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.001</span><span class="p">,</span> <span class="sh">'</span><span class="s">reg_alpha</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="sh">'</span><span class="s">gamma</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="sh">'</span><span class="s">early_stopping_rounds</span><span class="sh">'</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+<span class="n">Best</span> <span class="n">Score</span><span class="p">:</span> <span class="mf">0.9626456205377728</span>
+</code></pre></div></div>
+
+<p>Enfin, nous avons notre classificateur XGBoost avec des hyperparamètres choisis aprés l’application de RandomizedSearchCV.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="n">nthread</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+        <span class="n">scale_pos_weight</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">seed</span><span class="o">=</span><span class="mi">27</span><span class="p">,</span>
+        <span class="n">subsample</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+        <span class="n">max_depth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+        <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+        <span class="n">colsample_bytree</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">reg_lambda</span><span class="o">=</span> <span class="mf">0.001</span><span class="p">,</span> 
+        <span class="n">reg_alpha</span><span class="o">=</span> <span class="mf">0.01</span><span class="p">,</span>
+        <span class="n">gamma</span><span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
+        <span class="n">early_stopping_rounds</span><span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+        <span class="n">eval_metric</span><span class="o">=</span><span class="sh">'</span><span class="s">logloss</span><span class="sh">'</span>
+</code></pre></div></div>
+
+<p>Les résultats trouvés :
+<img src="../assets/Q2XGBoostROC.png" alt="Receiver Operating Characteristic" />
+<img src="../assets/Q2XGBoost_G2.png" alt="Goal Rate vs. Shot Probability Model Percentile" />
+<img src="../assets/Q2XGBoost_G3.png" alt="shap_corr_matCumulative Goal Proportion vs. Shot Probability Model Percentilerix" />
+<img src="../assets/Q2XGBoost_G4.png" alt="Reliability Diagram (Calibration Curve) for Model" />
+=======</p>
+<h2 id="partie-3-modèles-de-base-1">Partie 3: Modèles de base</h2>
+
+<p>La précision du modèle est de 90% d’accuracy pour un modèle de régression logistique de base ce qui me semble trop élevé pour un classifieur de base basé seulement sur la distance. Un problème que je vois pourrait être que le classifieur ne fait qu’utiliser le taux de buts par distance, qui diminue plus la distance augmente, pour faire sa prédiction. Comme les buts sont relativement rares, le modèle n’a qu’à prédire légèrement plus de buts que le taux de buts par distance pour avoir une performance adéquate. Cependant, ce type de modèle, si utilisé sur d’autres données va faire des erreurs par exemple s’il y a un tir effectué de très loin vers un filet désert, des tirs de la ligne bleue lors d’avantage numérique, d’autant plus à 5 contre 3 etc. De plus, si on veut un modèle de plus en plus précis en analysant plus de données, la composante binaire nous intéresse moins que la probabilité que le tir soit un but.</p>
+
+<p><img src="../assets/Image1.png" alt="ROC curves for all the models" /></p>
+
+<p>Il est possible de voir qu’entre les caractéristiques de distance et d’angle, celle de distance est plus discriminante pour savoir si un tir sera un but ou non. Nous avions déjà développé cette intuition en regardant les graphiques de taux de buts par distance et par angle. Après 90 degrés, le taux de buts par angle frappe un plateau de 70 à 30 degrés tandis que le taux de buts par distance ne cesse de diminuer plus la distance augmente. On peut voir que lorsqu’on combine l’angle et la distance, le modèle performe légèrement mieux en terme de discrimination.</p>
+
+<p><img src="../assets/Image2.png" alt="Graphique du taux de buts par la probabilité du modèle en percentile" /></p>
+
+<p>Il est possible de voir encore une fois la même tendance, c’est-à-dire que la prédiction par le modèle est meilleure en termes de percentile en considérant le taux de but par distance que par angle pour les mêmes raisons qu’évoqué plus tôt. Encore une fois le modèle combiné performe légèrement mieux que celui de la distance seul.</p>
+
+<p><img src="../assets/Image3.png" alt="Graphique du taux de buts par la probabilité du modèle en percentile" /></p>
+
+<p>Il est possible de voir encore une fois la même tendance, c’est-à-dire que la prédiction par le modèle est meilleure en termes de percentile en considérant le taux de but par distance que par angle pour les mêmes raisons qu’évoqué plus tôt. Encore une fois le modèle combiné performe légèrement mieux que celui de la distance seul. Le modèle par angle offre un performance légèrement meilleure que le modèle aléatoire de base.</p>
+
+<p><img src="../assets/Image4.png" alt="Graphique du taux de buts par la probabilité du modèle en percentile" /></p>
+
+<p>On voit qu’ajouter une variable pour que notre modèle soit plus précis fonctionne. Cependant, comme nous n’avons que fait des modèles de bases, nous atteignons à peine le 0,4 de probabilité prédite moyenne avec notre meilleur modèle, soit celui de la distance et de l’angle combiné. Il faudra très probablement inclure plus de caractéristiques plus complexes dans les prochaines étapes du projet pour faire des modèles se rapprochant de la ligne de la calibration parfaite.</p>
+
+<h2 id="partie-3---ingéneries-des-charactéristiques">Partie 3 - Ingéneries des charactéristiques</h2>
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <p>9acdaf782465def919acece561c245176ff86683</p>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>On constate une petite amélioration au niveau de ROC par rapport au premier modéle, et on obsèrve aussi qu’au niveau du diagramme calibration notre modéle de la partie 2 s’éloigne de la ligne de calibration parfaite.</p>
+
+<p><a href="https://www.comet.com/francis75/nhl-projectvf/cbc103876f724bc191f1090a1e6781c8">XGBoostPartII</a></p>
+
+<p>«««&lt; HEAD
+<strong>Question 3:</strong><br /></p>
+
+<p>Sélection des fonctionnalités :</p>
+
+<p>Un modèle XGBoost entraîné calcule automatiquement l’importance des fonctionnalités sur le problème de modélisation prédictive.</p>
+
+<p>Ces scores d’importance sont disponibles dans la variable membre d’importance des fonctionnalités du modèle entraîné. Nous avons pu imprimés directement comme suit :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">plot_importance</span><span class="p">(</span><span class="n">xgb_classifier</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Les caractéristiques ‘is_rebound’, ‘about.period’ sont les moins important dans la prédiction avec des F score respectivement 12, 13. Et les caractéristiques ‘coordinates.y’, ‘distance_to_target_goal’,’prev_result.eventTypeId’ avec des F score respectivement 457,337,320. Ce qui peut être justifiables pour prédire les buts dans un contexte de hockey.</p>
+
+<p>‘coordinates.y’ : La position y sur le terrain peut certainement avoir un impact sur la probabilité de marquer un but. Les tirs pris de positions plus avancées sur le terrain peuvent avoir des angles de tir différents et peuvent être plus difficiles à défendre.</p>
+
+<p>‘distance_to_target_goal’ : La distance au but est également une caractéristique importante. En général, les tirs pris de plus près ont une probabilité plus élevée de se transformer en but. Cependant, cela peut dépendre de divers facteurs, y compris la compétence du tireur.</p>
+
+<p>‘prev_result.eventTypeId’ : La nature du résultat précédent (par exemple, un tir réussi ou raté) peut également influencer les résultats futurs. Cela peut être une caractéristique informative pour capturer la dynamique du jeu.</p>
+
+<p><img src="../assets/Feature_importance.png" alt="Feature_importance" /></p>
+
+<p>On a aussi utilisé la bibliothèque SHAP (SHapley Additive exPlanations) qui permet d’expliquer la sortie de tout modèle comme une somme de contributions de chaque fonction d’entrée, attribuant une valeur d’importance à chaque caractéristique pour chaque prédiction.</p>
+
+<p><img src="../assets/ShapImportance.png" alt="Shap Résultat" /></p>
+
+<p>Shap classe également les caractéristiques ‘is_rebound’, ‘about.period’, et ‘time_since_last_event’ parmi les moins importantes. En revanche, il accorde une importance significative aux caractéristiques ‘coordinates.y’, ‘distance_to_target_goal’, et ‘game_second’.</p>
+
+<p>Ensuite on a étudié l’effets d’interaction : pour observer si certaines caractéristiques ont tendance à interagir entre elles. Les effets d’interaction peuvent fournir des indications sur la manière dont les caractéristiques s’influencent mutuellement dans la prédiction. Les fortes corrélations peuvent indiquer des interactions.</p>
+
+<p><img src="../assets/shap_corr_matrix.png" alt="shap_corr_matrix" /></p>
+
+<p>On constate que les caractéristiques “shot angle change”et “is rebound” ; 
+ont une valeur de 0.97 dans le contexte d’une matrice de corrélation ce qui indique une forte corrélation négative entre ces deux variables. La corrélation négative suggère qu’il y a une relation linéaire inverse entre les deux variables : lorsque l’une augmente, l’autre diminue de manière proportionnelle.</p>
+
+<p>Plus précisément, une valeur de -0.97 indique une corrélation très forte et presque parfaite (en termes de magnitude) entre ces deux variables. Cela signifie que, dans votre ensemble de données, il y a une tendance très claire selon laquelle lorsque le “shot angle change” augmente, la probabilité que cela soit un “rebound” diminue fortement, et vice versa.</p>
+
+<p>Et les caractéristiques ‘prev_result.eventTypeId’ et “is rebound” ont une valeur de -0.75 ce qui suggère une relation inverse relativement forte entre ces deux variables. Cela signifie que, en général, lorsque ‘prev_result.eventTypeId’ augmente, la probabilité d’un “rebound” diminue, et vice versa.</p>
+
+<p>De manière similaire, une corrélation de 0.75 entre ‘prev_result.eventTypeId’ et “shot angle change” suggère une relation positive relativement forte. En d’autres termes, lorsque ‘prev_result.eventTypeId’ augmente, la valeur de “shot angle change” a tendance à augmenter également.</p>
+
+<p>Voici quelques interprétations possibles :</p>
+
+<p>‘prev_result.eventTypeId’ et “is rebound” : Il se peut que le type d’événement précédent ait une influence sur la probabilité qu’un tir soit un “rebound”. Par exemple, si le tir précédent a été arrêté par le gardien de but, il pourrait y avoir moins de chances qu’un tir suivant soit un “rebound”.</p>
+
+<p>‘prev_result.eventTypeId’ et “shot angle change” : La corrélation positive peut indiquer que certaines situations ou types d’événements antérieurs sont associés à des changements d’angle de tir. Par exemple, des événements spécifiques pourraient conduire à des positions de tir différentes, influençant ainsi l’angle du tir suivant.</p>
+
+<p>Pour traiter cela, nous avons envisager d’utiliser une technique de sélection de caractéristiques la régression LASSO (L1 regularization) qui favorise la sparsité en poussant certains coefficients vers zéro :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Fit a LASSO regression model
+</span><span class="n">lasso_model</span> <span class="o">=</span> <span class="nc">Lasso</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>  
+<span class="n">lasso_model</span><span class="p">.</span><span class="nf">fit</span><span class="p">(</span><span class="n">X_train_resampled</span><span class="p">,</span> <span class="n">y_train_resampled</span><span class="p">)</span>
+<span class="c1"># Get selected features
+</span><span class="n">selected_features</span> <span class="o">=</span> <span class="n">X_train_resampled</span><span class="p">.</span><span class="n">columns</span><span class="p">[</span><span class="n">lasso_model</span><span class="p">.</span><span class="n">coef_</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+<span class="c1"># Use only selected features
+</span><span class="n">X_train_lasso</span> <span class="o">=</span> <span class="n">X_train_resampled</span><span class="p">[</span><span class="n">selected_features</span><span class="p">]</span>
+<span class="n">X_val_lasso</span> <span class="o">=</span> <span class="n">X_val_loo</span><span class="p">[</span><span class="n">selected_features</span><span class="p">]</span>
+<span class="n">X_train_lasso</span>
+</code></pre></div></div>
+
+<p>Les résultats trouvés :
+<img src="../assets/Q3XGBoostROC.png" alt="Receiver Operating Characteristic" />
+<img src="../assets/Q3XGBoost_G2.png" alt="Goal Rate vs. Shot Probability Model Percentile" />
+<img src="../assets/Q3XGBoost_G3.png" alt="shap_corr_matCumulative Goal Proportion vs. Shot Probability Model Percentilerix" />
+<img src="../assets/Q3XGBoost_G4.png" alt="Reliability Diagram (Calibration Curve) for Model" /></p>
+
+<p>On constate que les probabilités prédites par le modèle soient loin de la ligne de calibration du modéle de la partie 3 par rapport de la partie 2. Ainsi qu’une diminution de la valeur de ROC. Malgré les techniques testé, il faut investiguer pour améliorer la calibration de votre modèle.</p>
+
+<p><a href="https://www.comet.com/francis75/nhl-projectvf/cbc103876f724bc191f1090a1e6781c8">ExpérianceXGBoostPartIII</a></p>
+
+<h2 id="partie-6---on-a-essayé-de-faire-de-notre-mieux-avec-des-nouveaux-modèles">Partie 6 - On a essayé de faire de notre mieux avec des nouveaux modèles</h2>
+
+<h3 id="decisiontree-et-random-forest">DecisionTree et Random Forest</h3>
+
+<p>Lien vers l’expérience de Decision Tree:</p>
+
+<p><a href="https://www.comet.com/francis75/nhl-project/c63d0e82d14b4d2c8988f57cf26cf730?experiment-tab=panels&amp;showOutliers=true&amp;smoothing=0&amp;xAxis=wall">ExpérianceDecisionTree</a></p>
+
+<p>Lien vers Random Forrest:</p>
+
+<p><a href="https://www.comet.com/francis75/nhl-project/f2d417d4484b4515b690f6a150862a03?experiment-tab=panels&amp;showOutliers=true&amp;smoothing=0&amp;xAxis=wall">ExpérianceRandomForrest</a></p>
+
+<p>Pour les deux modèles, nous avons effectué une validation croisée sur 5 “fold” et stratifiée afin d’avoir autant d’échantillons de buts dans les “fold” de validation. Nous avons également fait une recherche d’hyperparamètres.</p>
+
+<p>Pour Decision Tree voici les paramètres utilisés:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="sh">'</span><span class="s">smote_tomek__sampling_strategy</span><span class="sh">'</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>  <span class="c1"># Different ratios of minority to majority class
+</span>   <span class="sh">'</span><span class="s">classifier__max_depth</span><span class="sh">'</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span>  <span class="c1"># Maximum depth of the tree
+</span>   <span class="sh">'</span><span class="s">classifier__min_samples_split</span><span class="sh">'</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>  <span class="c1"># Minimum number of samples required to split an internal node
+</span>   <span class="sh">'</span><span class="s">classifier__min_samples_leaf</span><span class="sh">'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>  <span class="c1"># Minimum number of samples required to be at a leaf node
+</span><span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>Pour Random Forrest:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Parameter grid for GridSearchCV
+</span><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="sh">'</span><span class="s">randomforestclassifier__n_estimators</span><span class="sh">'</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">],</span>  <span class="c1"># Number of trees in the forest
+</span>   <span class="sh">'</span><span class="s">randomforestclassifier__max_depth</span><span class="sh">'</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="bp">None</span><span class="p">],</span>  <span class="c1"># Maximum depth of the trees
+</span>   <span class="sh">'</span><span class="s">randomforestclassifier__min_samples_leaf</span><span class="sh">'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>  <span class="c1"># Minimum number of samples required at a leaf node
+</span>   <span class="sh">'</span><span class="s">randomforestclassifier__class_weight</span><span class="sh">'</span><span class="p">:</span> <span class="p">[</span><span class="sh">'</span><span class="s">balanced</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">balanced_subsample</span><span class="sh">'</span><span class="p">]</span>  <span class="c1"># Class weights
+</span><span class="p">}</span>
+
+</code></pre></div></div>
+
+<p><strong>Nettoyage et préparations des données</strong></p>
+
+<h1 id="nous-avons-imputés-les-données-avec-la-medianne-pour-les-données-numériques-et-la-données-la-plus-fréquente-pour-les-données-catégoriques">Nous avons imputés les données avec la medianne pour les données numériques et la données la plus fréquente pour les données catégoriques.</h1>
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <p>9acdaf782465def919acece561c245176ff86683</p>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Ensuite, pour les données catégoriques, le codeur cible TargetEncoder de la librairie category_encoder est utiilisé avec un smoothing de 20. 
+La technique d’échantillonnage SMOTE-Tomek sont appliqués à l’intérieur de chaque “fold” du processus de validation croisée, y compris à la fois les parties d’entraînement et de validation à l’intérieur de ce “fold”. Cependant, ils ne sont pas appliqués à l’ensemble du jeu de données en une seule fois. Ceci est une distinction importante pour éviter toute fuite de données.</p>
+
+<p>«««&lt; HEAD
+Dans le contexte de “GridSearchCV” avec un pipeline dans scikit-learn, chaque fold de la validation croisée est traité comme un processus d’entraînement et de validation distinct. Les étapes du pipeline (y compris le codage de la cible et l’échantillonnage SMOTE-Tomek) ne sont appliquées qu’à la partie d’entraînement de chaque fold. Ensuite, la partie de validation est transformée (mais pas ajustée) avec le codeur, et aucune échantillonnage n’est effectuée sur les données de validation (car l’échantillonnage n’est généralement pas effectué sur les données de validation/test).</p>
+
+<p>Voici ce qui se passe dans chaque fold de la validation croisée :</p>
+
+<ol>
+  <li>
+    <p><strong>Partie d’Entraînement du Fold</strong>: Le codeur cible est ajusté sur la partie d’entraînement, puis utilisé pour transformer les données d’entraînement. Ensuite, la technique SMOTE-Tomek est appliquée aux données d’entraînement encodées. Le modèle est entraîné sur ces données encodées et échantillonnées.</p>
+  </li>
+  <li>
+    <p><strong>Partie de Validation du Fold</strong>: Le même codeur cible (ajusté sur la partie d’entraînement) est utilisé pour transformer la partie de validation. La technique SMOTE-Tomek n’est pas appliquée aux données de validation. Le modèle est ensuite évalué sur ces données de validation transformées.</p>
+  </li>
+</ol>
+
+<p>En procédant ainsi, le pipeline garantit que les données de validation restent invisibles et ne sont pas utilisées dans le processus d’ajustement du codeur ni de la technique SMOTE-Tomek, évitant ainsi toute fuite de données. C’est une pratique standard et recommandée lors de l’utilisation de pipelines avec des étapes de prétraitement dans scikit-learn.</p>
+
+<p><strong>Résultats</strong>
+Nous avons obtenus de très mauvais résultats pour Decision Tree. 
+Mais Random Forrest semble avoir mieux performer.</p>
+
+<p><img src="../assets/ROC_curve_RF.png" alt="ROC_curve_RF" />
+<img src="../assets/goal_rate_RF.png" alt="goal_rate_RF" />
+<img src="../assets/cumulative_proportion_RF.png" alt="cumulative_proportion_RF" /></p>
+
+<h2 id="partie-7">Partie 7</h2>
+
+<p><strong>Question 1:</strong><br /></p>
+
+<ul>
+  <li>Résultat du test du modéle de la partie 5 XGBoost sur les donnés de la saison régulière :</li>
+</ul>
+
+<p><img src="../assets/P7ModeleXGBoostQ2G1.png" alt="Receiver Operating Characteristic" />
+<img src="../assets/P7ModeleXGBoostQ2G2.png" alt="Goal Rate vs. Shot Probability Model Percentile" />
+<img src="../assets/P7ModeleXGBoostQ2G3.png" alt="shap_corr_matCumulative Goal Proportion vs. Shot Probability Model Percentilerix" />
+<img src="../assets/P7ModeleXGBoostQ2G4.png" alt="Reliability Diagram (Calibration Curve) for Model" /></p>
+
+<p><strong>Question 2:</strong><br /></p>
+
+<ul>
+  <li>Résultat du test du modéle de la partie 5 XGBoost sur les donnés de la saison régulière :</li>
+</ul>
+
+<p><img src="../assets/P7ModeleXGBoostQ2G1.png" alt="Receiver Operating Characteristic" />
+<img src="../assets/P7ModeleXGBoostQ2G2.png" alt="Goal Rate vs. Shot Probability Model Percentile" />
+<img src="../assets/P7ModeleXGBoostQ2G3.png" alt="shap_corr_matCumulative Goal Proportion vs. Shot Probability Model Percentilerix" />
+<img src="../assets/P7ModeleXGBoostQ2G4.png" alt="Reliability Diagram (Calibration Curve) for Model" /></p>
+
+<p>=======</p>
+<h2 id="partie-4-ingénierie-des-caractéristiques-2-1">Partie 4: Ingénierie des caractéristiques 2</h2>
+<p><strong>Liste des caractéristiques créés</strong><br /></p>
+<ol>
+  <li>game_seconds: Temps ecoulé depuis debut de la periode en secondes</li>
+  <li>about.period: Periode de jeu</li>
+  <li>shot_distance: Distance de tir</li>
+  <li>shot_angle: Angle de tir</li>
+  <li>last_event_type: Dernier événement avant celui actuel</li>
+  <li>last_event_y: Position y du dernier événement</li>
+  <li>last_event_x: Position x du dernier événement</li>
+  <li>time_since_last_event: Temps ecoulé depuis le dernier événement en secondes</li>
+  <li>distance_from_last_event: Distance séparant l’événement actuel de l’événement précedent</li>
+  <li>is_rebound: Valeur booléene indiquant si l’événement est un tir</li>
+  <li>shot_angle_change: Changement d’angle après un tir</li>
+  <li>event_speed: Vitesse de l’événement en cours</li>
+  <li>power_play_timer: Temps écoulé depuis le début du jeu de puissance en secondes</li>
+  <li>friendly skaters on ice: Le nombre de patineurs dans l’équipe actuelle</li>
+  <li>Opponents skaters on ice: Le nombre de patineurs de l’équipe adverse</li>
+</ol>
+
+<p>**Lien vers lien vers l’expérience qui stocke l’artefact DataFrame filtré pour le jeu spécifié:
+https://www.comet.com/francis75/feature-engineering-data/cb1bac468bcd4f23b0f6fb8a25e17af2</p>
+
+<h2 id="partie-5---modèles-avancés">Partie 5 - Modèles Avancés</h2>
+<hr />
+<p>layout: post
+title: milestone2
+—</p>
+
+<h2 id="partie-2--ingénierie-des-caractéristiques-i-1">Partie 2:  Ingénierie des caractéristiques I</h2>
+<p><strong>Question 1</strong><br />
+<img src="../assets/Histogram_Distance.png" alt="Histogramme des tirs et des buts par distance du filet " /></p>
+
+<p>Sur cet histogramme, il est possible de réaliser que la majorité des tirs et des buts proviennent d’une distance circonscrite entre 0 et 60 pieds. Il semble y avoir une distance où il y a plus de tirs et plus de but dans les environs de 10-15 pieds, puis plus on s’éloigne de cette distance, plus le nombre de buts diminue.</p>
+
+<p><img src="../assets/Histogram_Angle.png" alt="Histogramme des tirs et des buts par angle par rapport au but" /></p>
+
+<p>Sur cet histogramme, en un coup d’œil, nous pouvons déceler qu’il semble y avoir 3 pics pour les sites de prédilection pour les tirs, soit 90, 60 et 45 degrés. À garder en tête que nous avons fait une échelle de 0 à 90 donc les valeurs inférieures à 90 représentent les valeurs pour les deux côtés de la patinoire. Nous avons préféré ce mode de représentation parce que les angles opposés (par exemple 45 et 135) représentent la même visualisation du filet et l’aire du filet disponible pour le tir (avec ou sans gardien). Il est facile de voir que plus l’angle diminue à partir de 90 degré, plus le nombre de buts diminue. Plus il y a un angle, moins de filet disponible et visible pour un but est présent lorsqu’un gardien est positionné correctement.</p>
+
+<p><img src="../assets/2DHistogram_Distance.png" alt="Histogramme 2D démontrant le lien entre la distance et l’angle" /></p>
+
+<p>Il est possible de voir que la majorité des tirs sont produits le plus prêt du filet possible et à un angle se rapprochant le plus de 90 degré parce que ça semble être des caractéristiques liées au taux de succès pour marquer un but. Cependant, il faudra analyser plus parce que le taux de buts plus élevés avec ses caractéristiques pourraient être seulement dû à la fréquence plus augmentée de ces évènements.</p>
+
+<p><strong>Question 2</strong><br /></p>
+
+<p><img src="../assets/GoalRatebyDistanceBin.png" alt="Histogramme du taux de buts par groupe de distance en pieds" />			
+<img src="../assets/GoalRatebyDistanceBinExludEmptynet.png" alt="Histogramme du taux de buts par groupe de distance en pieds" /></p>
+
+<p>En regardant le taux de buts par groupe de distance en pieds, il est possible de voir une tendance que les tirs les plus dangereux semblent être ceux effectués près du filet. La recrudescence des buts à partir de la distance de 100 pieds est due aux buts dans les filets déserts et aux événements mal classés. Effectivement, comme peu de tirs sont effectués à cette distance quand le gardien en en position dans le but, le taux de buts à ces distances sont expliqués par les buts en filet désert. On peut réaliser dans la figure de droite en retirant ces buts que le taux de buts diminue plus on s’éloigne du filet.</p>
+
+<p><img src="../assets/GoalRatebyAngleBin.png" alt="Histogramme du taux de buts par angle par rapport au filet" /></p>
+
+<p>En un simple coup d’œil, il est possible de voir que plus on s’éloigne de l’angle de 90 degré, moins les tirs sont efficaces pour marquer des buts comme le taux de buts diminue. Cependant, l’effet est moins marqué que celui de la distance et il y a un effet plateau entre 70 et 30 degrés où les taux sont similaires. À noter encore que les groupes d’angle sous les 90 degré représente les angles à gauche et à droite du gardien, alors l’importance d’être près du 90 degré ici est minimisée.</p>
+
+<p><img src="../assets/EmptyNetvsNon-EmptyNet.png" alt="Histogramme en transformation log des buts marqués en filet désert ou non" /></p>
+
+<p>Ici, nous avons dû faire une transformation en base logarithmique pour mieux déceler et comparer les deux entités parce que la différence en termes de nombre d’événements entre les deux catégories est trop importante. Il est possible de voir que le nombre de buts en filet désert est assez constant à travers toutes les distances et dépasse le nombre de buts marqués avec un gardien présent à environ 70 pieds du filet. Il est possible de penser que les événements où un but est marqué à une distance plus grande que 100 pieds lorsque le gardien est présent sont rarissimes et qu’une partie d’entre eux ont des erreurs au niveau de l’enregistrement de leurs coordonnées dans le jeu de données initial.</p>
+
+<p>Pour identifier les événements qui étaient possiblement mal classés en termes de coordonnées, il suffisait d’utiliser l’intuition de nos connaissances de hockey et de celle acquise avec la visualisation des données en observant les buts réalisés avec un gardien présent à des distances plus hautes. Voici un exemple d’évènements repéré:	
+0,2,2015-10-08T00:21:09Z,Toronto Maple Leafs,GOAL,-73.0,-1.0,Deflected,False,Power Play,James van Riemsdyk,Carey Price,2015020001,regular</p>
+
+<p>En 2015, en deuxième période, les Maple Leafs tiraient sur le but (89,0) et donc un tir dévié sur le power play provenait le plus probablement des coordonnées (73, -1). Comme on peut voir sur la photo prise d’une vidéo youtube d’un récapitulatif de la chaîne TVA sport, James van Riemsdyk est le joueur positionné directement devant le gardien Carey Price.</p>
+
+<h2 id="partie-3-modèles-de-base-2">Partie 3: Modèles de base</h2>
+
+<p>La précision du modèle est de 90% d’accuracy pour un modèle de régression logistique de base ce qui me semble trop élevé pour un classifieur de base basé seulement sur la distance. Un problème que je vois pourrait être que le classifieur ne fait qu’utiliser le taux de buts par distance, qui diminue plus la distance augmente, pour faire sa prédiction. Comme les buts sont relativement rares, le modèle n’a qu’à prédire légèrement plus de buts que le taux de buts par distance pour avoir une performance adéquate. Cependant, ce type de modèle, si utilisé sur d’autres données va faire des erreurs par exemple s’il y a un tir effectué de très loin vers un filet désert, des tirs de la ligne bleue lors d’avantage numérique, d’autant plus à 5 contre 3 etc. De plus, si on veut un modèle de plus en plus précis en analysant plus de données, la composante binaire nous intéresse moins que la probabilité que le tir soit un but.</p>
+
+<p><img src="../assets/Image1.png" alt="ROC curves for all the models" /></p>
+
+<p>Il est possible de voir qu’entre les caractéristiques de distance et d’angle, celle de distance est plus discriminante pour savoir si un tir sera un but ou non. Nous avions déjà développé cette intuition en regardant les graphiques de taux de buts par distance et par angle. Après 90 degrés, le taux de buts par angle frappe un plateau de 70 à 30 degrés tandis que le taux de buts par distance ne cesse de diminuer plus la distance augmente. On peut voir que lorsqu’on combine l’angle et la distance, le modèle performe légèrement mieux en terme de discrimination.</p>
+
+<p><img src="../assets/Image2.png" alt="Graphique du taux de buts par la probabilité du modèle en percentile" /></p>
+
+<p>Il est possible de voir encore une fois la même tendance, c’est-à-dire que la prédiction par le modèle est meilleure en termes de percentile en considérant le taux de but par distance que par angle pour les mêmes raisons qu’évoqué plus tôt. Encore une fois le modèle combiné performe légèrement mieux que celui de la distance seul.</p>
+
+<p><img src="../assets/Image3.png" alt="Graphique du taux de buts par la probabilité du modèle en percentile" /></p>
+
+<p>Il est possible de voir encore une fois la même tendance, c’est-à-dire que la prédiction par le modèle est meilleure en termes de percentile en considérant le taux de but par distance que par angle pour les mêmes raisons qu’évoqué plus tôt. Encore une fois le modèle combiné performe légèrement mieux que celui de la distance seul. Le modèle par angle offre un performance légèrement meilleure que le modèle aléatoire de base.</p>
+
+<p><img src="../assets/Image4.png" alt="Graphique du taux de buts par la probabilité du modèle en percentile" /></p>
+
+<p>On voit qu’ajouter une variable pour que notre modèle soit plus précis fonctionne. Cependant, comme nous n’avons que fait des modèles de bases, nous atteignons à peine le 0,4 de probabilité prédite moyenne avec notre meilleur modèle, soit celui de la distance et de l’angle combiné. Il faudra très probablement inclure plus de caractéristiques plus complexes dans les prochaines étapes du projet pour faire des modèles se rapprochant de la ligne de la calibration parfaite.</p>
+
+<h2 id="partie-5-modèles-avancés">Partie 5 Modèles avancés</h2>
+
+<p><strong>Question 1:</strong><br /></p>
+
+<p>Dans cette partie, nous avons utilisé un modèle XGBoost avec les hyperparamètres par défaut qui sont définis par la bibliothèque XGBoost elle-même. Notez que nous utilisons XGBClassifier sans aucun argument, ce qui signifie que nous utilisons ceux par défaut.</p>
+
+<p><strong>Question 2:</strong><br /></p>
+
+<p>Préparation des données :</p>
+
+<ol>
+  <li>
+    <p>Encoder des variables catégorielles : L’algorithme XGBoost fonctionne avec des types numériques et vu que notre dataset contient des valeurs catégoriallles on a la techniques encodage leave on out.</p>
+  </li>
+  <li>
+    <p>Nettoyez les données :</p>
+  </li>
+</ol>
+
+<p>Pour les valeurs manquantes : nous avons eu le résultat suivant :</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                                              <span class="n">Missing</span> <span class="n">Values</span>  <span class="n">Percentage</span>
+<span class="n">distance_to_target_goal</span>                                   <span class="mi">17</span>    <span class="mf">0.005559</span>
+<span class="n">angle_to_target_goal</span>                                      <span class="mi">17</span>    <span class="mf">0.005559</span>
+<span class="n">about</span><span class="p">.</span><span class="n">period</span>                                               <span class="mi">0</span>    <span class="mf">0.000000</span>
+<span class="n">game_seconds</span>                                               <span class="mi">0</span>    <span class="mf">0.000000</span>
+<span class="n">coordinates</span><span class="p">.</span><span class="n">x</span>                                             <span class="mi">16</span>    <span class="mf">0.005232</span>
+<span class="n">coordinates</span><span class="p">.</span><span class="n">y</span>                                             <span class="mi">15</span>    <span class="mf">0.004905</span>
+<span class="n">prev_coordinates</span><span class="p">.</span><span class="n">x</span>                                      <span class="mi">4157</span>    <span class="mf">1.359323</span>
+<span class="n">prev_coordinates</span><span class="p">.</span><span class="n">y</span>                                      <span class="mi">4156</span>    <span class="mf">1.358996</span>
+<span class="n">time_since_last_event</span>                                      <span class="mi">0</span>    <span class="mf">0.000000</span>
+<span class="n">distance_from_last_event</span>                                <span class="mi">4169</span>    <span class="mf">1.363247</span>
+<span class="n">is_rebound</span>                                                 <span class="mi">0</span>    <span class="mf">0.000000</span>
+<span class="n">shot_angle_change</span>                                         <span class="mi">10</span>    <span class="mf">0.003270</span>
+<span class="n">event_speed</span>                                            <span class="mi">10783</span>    <span class="mf">3.525999</span>
+<span class="n">shot_or_goal</span>                                               <span class="mi">0</span>    <span class="mf">0.000000</span>
+<span class="n">prev_result</span><span class="p">.</span><span class="n">eventTypeId_smoothed_loo_encoded</span>               <span class="mi">0</span>    <span class="mf">0.000000</span>
+<span class="n">result</span><span class="p">.</span><span class="n">secondaryType_smoothed_loo_encoded</span>                 <span class="mi">42</span>    <span class="mf">0.013734</span>
+</code></pre></div></div>
+<p>On voit une variation de pourcentage des données manquantes pour les variables :
+Les variables qui n’ont pas de valeurs manquantes :
+shot_or_goal : Aucune valeur manquante (0%)
+time_since_last_event : Aucune valeur manquante (0%)
+is_rebound : Aucune valeur manquante (0%)
+about.period : Aucune valeur manquante (0%)
+game_seconds : Aucune valeur manquante (0%)
+prev_result.eventTypeId_smoothed_loo_encoded : Aucune valeur manquante (0%)</p>
+
+<p>Les variables qui ont des valeurs manquantes trés faible :
+distance_to_target_goal : 17 valeurs manquantes (0.005559%)
+angle_to_target_goal : 17 valeurs manquantes (0.005559%)
+coordinates.x : 16 valeurs manquantes (0.005232%)
+coordinates.y : 15 valeurs manquantes (0.004905%)
+shot_angle_change : 10 valeurs manquantes (0.003270%)
+result.secondaryType_smoothed_loo_encoded : 42 valeurs manquantes (0.013734%)</p>
+
+<p>Les variables qui ont des valeurs manquantes faible :
+distance_from_last_event : 4169 valeurs manquantes (1.363247%)
+prev_coordinates.x : 4157 valeurs manquantes (1.359323%)
+prev_coordinates.y : 4156 valeurs manquantes (1.358996%)</p>
+
+<p>Pour la variable event_speed 3.53% de valeurs manquantes n’est pas négligeable, mais ce n’est pas non plus extrêmement élevé. Et vu qu’on a pas encore etudié l’importance de cette variable pour l’analyse de notre modèle on ne va pas la supprimer : 
+event_speed : 10783 valeurs manquantes (3.525999%)</p>
+
+<p>Nous allons tester en premier temps, XGBoost missing parameter avant de passer à une autre solution.</p>
+
+<ol>
+  <li>Normaliser/standardiser les données :</li>
+</ol>
+
+<p>Vu que XGBoost, en tant qu’algorithme de gradient boosting, n’est généralement pas sensible à l’échelle des caractéristiques et gère bien les caractéristiques avec des échelles différentes, nous n’avons pas effectuer aucune opération pour normaliser nos données.</p>
+
+<ol>
+  <li>Déséquilibre des classes :</li>
+</ol>
+
+<p>Nous avons évaluer l’équilibre de nos étiquettes, et on a eu les résultats suivantes :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">shot_or_goal</span>
+<span class="mi">0</span>    <span class="mi">276782</span>
+<span class="mi">1</span>     <span class="mi">29032</span>
+</code></pre></div></div>
+<p><img src="../assets/EvaluationClasses.png" alt="Évaluation de l'équilibre des classes" /></p>
+
+<p>En regardant les résultats, on peut voir que la classe 0 a 276,782 occurrences tandis que la classe 1 a 29,032 occurrences. Cela indique un déséquilibre entre les deux classes, la classe 0 étant nettement plus fréquente que la classe 1. Donc on va tester en premier temps scale_pos_weight.</p>
+
+<p>Pour la prochaine étape on va essayer de tester plusieurs configurations du modéle XGBoost.</p>
+
+<ol>
+  <li>Configuration du modéle</li>
+</ol>
+
+<p>5.1. Paramètres généraux</p>
+
+<p>Afin déterminer quel booster utiliser. On a utiliser la fonction cross_val_score de scikit-learn. C’est une fonction qui nous a permis d’effectuer une validation croisée k-fold, où l’ensemble de données est divisé en k sous-ensembles (folds), et le modèle est formé et évalué 5 fois, en utilisant à chaque fois un fold différent comme ensemble de test et les folds restants comme ensemble de formation. L’entrainement a été fait avec l’ensemble de données aprés l’utilisation de techniques comme SMOTE et ADASYN.</p>
+
+<p>Nous avons eu les résultats suivants :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Evaluation</span> <span class="k">for</span> <span class="n">gbtree</span><span class="p">:</span>
+<span class="n">Mean</span> <span class="n">accuracy</span><span class="p">:</span> <span class="mf">0.6928195654066989</span>
+<span class="n">Mean</span> <span class="n">precision</span><span class="p">:</span> <span class="mf">0.18660854664748325</span>
+<span class="n">Mean</span> <span class="n">recall</span><span class="p">:</span> <span class="mf">0.6657768673121516</span>
+<span class="n">Mean</span> <span class="n">F1</span><span class="o">-</span><span class="n">score</span><span class="p">:</span> <span class="mf">0.291506349546542</span>
+
+<span class="n">Evaluation</span> <span class="k">for</span> <span class="n">gblinear</span><span class="p">:</span>
+<span class="n">Mean</span> <span class="n">accuracy</span><span class="p">:</span> <span class="mf">0.6492350388355984</span>
+<span class="n">Mean</span> <span class="n">precision</span><span class="p">:</span> <span class="mf">0.16804448927131777</span>
+<span class="n">Mean</span> <span class="n">recall</span><span class="p">:</span> <span class="mf">0.6822700170318263</span>
+<span class="n">Mean</span> <span class="n">F1</span><span class="o">-</span><span class="n">score</span><span class="p">:</span> <span class="mf">0.26945364456039583</span>
+
+<span class="n">Evaluation</span> <span class="k">for</span> <span class="n">dart</span><span class="p">:</span>
+<span class="n">Mean</span> <span class="n">accuracy</span><span class="p">:</span> <span class="mf">0.6928195654066989</span>
+<span class="n">Mean</span> <span class="n">precision</span><span class="p">:</span> <span class="mf">0.18660854664748325</span>
+<span class="n">Mean</span> <span class="n">recall</span><span class="p">:</span> <span class="mf">0.6657768673121516</span>
+<span class="n">Mean</span> <span class="n">F1</span><span class="o">-</span><span class="n">score</span><span class="p">:</span> <span class="mf">0.291506349546542</span>
+
+<span class="n">The</span> <span class="n">best</span> <span class="n">model</span> <span class="n">based</span> <span class="n">on</span> <span class="n">cross</span><span class="o">-</span><span class="n">validation</span> <span class="ow">is</span><span class="p">:</span> <span class="n">gbtree</span>
+<span class="n">Evaluation</span> <span class="n">on</span> <span class="n">the</span> <span class="n">validation</span> <span class="nb">set</span> <span class="k">for</span> <span class="n">the</span> <span class="n">best</span> <span class="n">model</span><span class="p">:</span>
+<span class="n">Accuracy</span><span class="p">:</span> <span class="mf">0.7136994588231447</span>
+<span class="n">Precision</span><span class="p">:</span> <span class="mf">0.18296119661825277</span>
+<span class="n">Recall</span><span class="p">:</span> <span class="mf">0.5809671313027017</span>
+<span class="n">F1</span><span class="o">-</span><span class="n">score</span><span class="p">:</span> <span class="mf">0.278283806619132</span>
+</code></pre></div></div>
+
+<p>Les résultats que nous avons obtenus montrent que le modèle gbtree est celui qui a la meilleure performance globale, avec des mesures d’évaluation élevées telles que l’accuracy, la précision, le rappel, et le F1-score. D’un point de vue global, il semble être un choix solide.</p>
+
+<p>Cependant, lorsqu’on regarde le modèle gblinear, on remarque que bien que l’accuracy soit raisonnable, les mesures de précision, de rappel, et de F1-score sont significativement plus basses. Cela pourrait indiquer que le modèle linéaire généralisé (gblinear) ne capture peut-être pas aussi bien les relations complexes dans nos données par rapport au modèle basé sur les arbres (gbtree).</p>
+
+<p>5.2. Paramètres pour Tree Booster</p>
+
+<p>XGBoost fournit de nombreux hyperparamètres qui peuvent être ajustés pour améliorer les performances du modèle. Certains hyperparamètres importants sont :</p>
+
+<p>n_estimators : Le nombre de tours de boosting.
+max_degree : La profondeur maximale de chaque arbre.
+learning_rate : La taille de pas utilisée pour les mises à jour de poids.
+subsample : La fraction d’échantillons à utiliser pour chaque cycle de boosting.
+colsample_bytree : La fraction de fonctionnalités à utiliser pour chaque arbre.</p>
+
+<p>Expériance I : (param_dist avec une profondeur maximale plus faible et un taux d’apprentissage plus élevé) :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Best</span> <span class="n">hyperparameters</span><span class="p">:{</span><span class="sh">'</span><span class="s">subsample</span><span class="sh">'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="sh">'</span><span class="s">n_estimators</span><span class="sh">'</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span> <span class="sh">'</span><span class="s">max_depth</span><span class="sh">'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="sh">'</span><span class="s">learning_rate</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span> <span class="sh">'</span><span class="s">colsample_bytree</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">}</span>
+</code></pre></div></div>
+
+<p>Performance du modèle sur les données de validation :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Accuracy</span><span class="p">:</span> <span class="mf">0.7113</span>
+<span class="n">Precision</span><span class="p">:</span> <span class="mf">0.6147</span>
+<span class="n">Recall</span><span class="p">:</span> <span class="mf">0.1881</span>
+<span class="n">F1</span><span class="o">-</span><span class="n">score</span><span class="p">:</span> <span class="mf">0.2880</span>
+</code></pre></div></div>
+
+<p>Accuracy : est d’environ 71,13 %. Cela signifie qu’environ 71,13 % des prédictions faites par le modèle sont correctes.</p>
+
+<p>Précision : la précision est d’environ 61,47 %. Cela signifie que lorsque le modèle prédit la classe positive, il est correct dans environ 61,47 % des cas.</p>
+
+<p>Rappel (sensibilité) : Dans notre cas, le rappel est d’environ 18,81 %. Cela signifie que le modèle ne capture qu’environ 18,81 % des cas positifs réels.</p>
+
+<p>Expériance II : (param_dist avec max_depth plus élevé et learning_rate plus bas) :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Best</span> <span class="n">hyperparameters</span><span class="p">:</span> <span class="p">{</span><span class="sh">'</span><span class="s">subsample</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">,</span> <span class="sh">'</span><span class="s">n_estimators</span><span class="sh">'</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="sh">'</span><span class="s">min_child_weight</span><span class="sh">'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="sh">'</span><span class="s">max_depth</span><span class="sh">'</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="sh">'</span><span class="s">learning_rate</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="sh">'</span><span class="s">colsample_bytree</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">}</span>
+</code></pre></div></div>
+<p>Performance du modèle sur les données de validation :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Accuracy</span><span class="p">:</span> <span class="mf">0.8806</span>
+<span class="n">Precision</span><span class="p">:</span> <span class="mf">0.1561</span>
+<span class="n">Recall</span><span class="p">:</span> <span class="mf">0.2742</span>
+<span class="n">F1</span><span class="o">-</span><span class="n">score</span><span class="p">:</span> <span class="mf">0.1989</span>
+</code></pre></div></div>
+<p>Accuracy : est d’environ 88,06 %. Cela signifie qu’environ 88,06 % des prédictions faites par le modèle sont correctes.</p>
+
+<p>Précision : la précision est d’environ 15,61 %. Cela signifie que lorsque le modèle prédit la classe positive, il est correct dans environ 15,61 % des cas.</p>
+
+<p>Rappel (sensibilité) : Dans notre cas, le rappel est d’environ 19,89 %. Cela signifie que le modèle ne capture qu’environ 19,89% des cas positifs réels.</p>
+
+<p>Observations :</p>
+
+<p>Sur la base des deux expériences, il semble que la configuration de l’expérience 2 (max_depth plus élevé, learning_rate plus faible) ait donné de meilleurs résultats sur l’ensemble de validation. Voici quelques informations et ajustements potentiels :</p>
+
+<p>Expérience 1 :</p>
+
+<p>Avantages : Précision plus élevée, ce qui indique un taux de faux positifs plus faible.
+Inconvénients : faible rappel, ce qui signifie un taux de faux négatifs plus élevé. Précision et score F1 modérés.</p>
+
+<p>Expérience 2 :</p>
+
+<p>Avantages : Précision et score F1 plus élevés, ce qui indique un bon équilibre entre la précision et le rappel.
+Inconvénients : précision plus faible, ce qui peut entraîner un plus grand nombre de faux positifs.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">param_subsample</span>  <span class="n">param_colsample_bytree</span>  <span class="n">mean_score</span>
+<span class="mi">0</span>              <span class="mf">0.5</span>                     <span class="mf">0.5</span>    <span class="mf">0.939308</span>
+<span class="mi">1</span>              <span class="mf">0.5</span>                     <span class="mf">0.5</span>    <span class="mf">0.906488</span>
+<span class="mi">2</span>              <span class="mf">0.8</span>                     <span class="mf">1.0</span>    <span class="mf">0.960865</span>
+<span class="mi">3</span>              <span class="mf">1.0</span>                     <span class="mf">0.8</span>    <span class="mf">0.961295</span>
+<span class="mi">4</span>              <span class="mf">1.0</span>                     <span class="mf">0.8</span>    <span class="mf">0.961282</span>
+<span class="mi">5</span>              <span class="mf">1.0</span>                     <span class="mf">0.8</span>    <span class="mf">0.913751</span>
+<span class="mi">6</span>              <span class="mf">1.0</span>                     <span class="mf">1.0</span>    <span class="mf">0.961114</span>
+<span class="mi">7</span>              <span class="mf">0.8</span>                     <span class="mf">0.5</span>    <span class="mf">0.960965</span>
+<span class="mi">8</span>              <span class="mf">0.5</span>                     <span class="mf">0.5</span>    <span class="mf">0.904596</span>
+<span class="mi">9</span>              <span class="mf">0.8</span>                     <span class="mf">1.0</span>    <span class="mf">0.954664</span>
+<span class="n">Best</span> <span class="n">Parameters</span><span class="p">:</span> <span class="p">{</span><span class="sh">'</span><span class="s">subsample</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span> <span class="sh">'</span><span class="s">n_estimators</span><span class="sh">'</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span> <span class="sh">'</span><span class="s">max_depth</span><span class="sh">'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="sh">'</span><span class="s">learning_rate</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span> <span class="sh">'</span><span class="s">colsample_bytree</span><span class="sh">'</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+<span class="n">Best</span> <span class="n">Score</span><span class="p">:</span> <span class="mf">0.9612952029594501</span>
+</code></pre></div></div>
+<p>5.3. Techniques avancées</p>
+
+<p>Pour améliorer encore les performances de notre modèle XGBoost, on a utiliser des techniques avancées telles que :</p>
+
+<p>Early Stopping : arrêtez l’entraînement lorsque l’erreur de validation ne s’améliore pas pendant un certain nombre de tours.</p>
+
+<p>reg_alpha et reg_lambda : Paramètres de régularisation L1 et L2 qui peuvent aider à prévenir le surajustement.</p>
+
+<p>gamma : Paramètre de régularisation qui contrôle si un nœud doit être scindé en fonction de la réduction de perte attendue après la scission.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">param_subsample</span>  <span class="n">param_colsample_bytree</span>  <span class="n">mean_score</span>
+<span class="mi">0</span>              <span class="mf">0.5</span>                     <span class="mf">0.5</span>    <span class="mf">0.939308</span>
+<span class="mi">1</span>              <span class="mf">0.5</span>                     <span class="mf">0.5</span>    <span class="mf">0.906488</span>
+<span class="mi">2</span>              <span class="mf">0.8</span>                     <span class="mf">1.0</span>    <span class="mf">0.960865</span>
+<span class="mi">3</span>              <span class="mf">1.0</span>                     <span class="mf">0.8</span>    <span class="mf">0.961295</span>
+<span class="mi">4</span>              <span class="mf">1.0</span>                     <span class="mf">0.8</span>    <span class="mf">0.961282</span>
+<span class="mi">5</span>              <span class="mf">1.0</span>                     <span class="mf">0.8</span>    <span class="mf">0.913751</span>
+<span class="mi">6</span>              <span class="mf">1.0</span>                     <span class="mf">1.0</span>    <span class="mf">0.961114</span>
+<span class="mi">7</span>              <span class="mf">0.8</span>                     <span class="mf">0.5</span>    <span class="mf">0.960965</span>
+<span class="mi">8</span>              <span class="mf">0.5</span>                     <span class="mf">0.5</span>    <span class="mf">0.904596</span>
+<span class="mi">9</span>              <span class="mf">0.8</span>                     <span class="mf">1.0</span>    <span class="mf">0.954664</span>
+<span class="n">Best</span> <span class="n">Parameters</span><span class="p">:</span> <span class="p">{</span><span class="sh">'</span><span class="s">reg_lambda</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.001</span><span class="p">,</span> <span class="sh">'</span><span class="s">reg_alpha</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="sh">'</span><span class="s">gamma</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="sh">'</span><span class="s">early_stopping_rounds</span><span class="sh">'</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+<span class="n">Best</span> <span class="n">Score</span><span class="p">:</span> <span class="mf">0.9626456205377728</span>
+</code></pre></div></div>
+
+<p>Enfin, nous avons notre classificateur XGBoost avec des hyperparamètres choisis aprés l’application de RandomizedSearchCV.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="n">nthread</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+        <span class="n">scale_pos_weight</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">seed</span><span class="o">=</span><span class="mi">27</span><span class="p">,</span>
+        <span class="n">subsample</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+        <span class="n">n_estimators</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+        <span class="n">max_depth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+        <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+        <span class="n">colsample_bytree</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">reg_lambda</span><span class="o">=</span> <span class="mf">0.001</span><span class="p">,</span> 
+        <span class="n">reg_alpha</span><span class="o">=</span> <span class="mf">0.01</span><span class="p">,</span>
+        <span class="n">gamma</span><span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
+        <span class="n">early_stopping_rounds</span><span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+        <span class="n">eval_metric</span><span class="o">=</span><span class="sh">'</span><span class="s">logloss</span><span class="sh">'</span>
+</code></pre></div></div>
+
+<p><strong>Question 3:</strong><br /></p>
+
+<p>Sélection des fonctionnalités :</p>
+
+<p>Un modèle XGBoost entraîné calcule automatiquement l’importance des fonctionnalités sur le problème de modélisation prédictive.</p>
+
+<p>Ces scores d’importance sont disponibles dans la variable membre d’importance des fonctionnalités du modèle entraîné. Nous avons pu imprimés directement comme suit :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">plot_importance</span><span class="p">(</span><span class="n">xgb_classifier</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Les caractéristiques ‘is_rebound’, ‘about.period’ sont les moins important dans la prédiction avec des F score respectivement 12, 13. Et les caractéristiques ‘coordinates.y’, ‘distance_to_target_goal’,’prev_result.eventTypeId’ avec des F score respectivement 457,337,320. Ce qui peut être justifiables pour prédire les buts dans un contexte de hockey.</p>
+
+<p>‘coordinates.y’ : La position y sur le terrain peut certainement avoir un impact sur la probabilité de marquer un but. Les tirs pris de positions plus avancées sur le terrain peuvent avoir des angles de tir différents et peuvent être plus difficiles à défendre.</p>
+
+<p>‘distance_to_target_goal’ : La distance au but est également une caractéristique importante. En général, les tirs pris de plus près ont une probabilité plus élevée de se transformer en but. Cependant, cela peut dépendre de divers facteurs, y compris la compétence du tireur.</p>
+
+<p>‘prev_result.eventTypeId’ : La nature du résultat précédent (par exemple, un tir réussi ou raté) peut également influencer les résultats futurs. Cela peut être une caractéristique informative pour capturer la dynamique du jeu.</p>
+
+<p><img src="../assets/Feature_importance.png" alt="Feature_importance" /></p>
+
+<p>On a aussi utilisé la bibliothèque SHAP (SHapley Additive exPlanations) qui permet d’expliquer la sortie de tout modèle comme une somme de contributions de chaque fonction d’entrée, attribuant une valeur d’importance à chaque caractéristique pour chaque prédiction.</p>
+
+<p><img src="../assets/shap_summary_plot.png" alt="Shap Résultat" /></p>
+
+<p>Shap classe également les caractéristiques ‘is_rebound’, ‘about.period’, et ‘time_since_last_event’ parmi les moins importantes. En revanche, il accorde une importance significative aux caractéristiques ‘coordinates.y’, ‘distance_to_target_goal’, et ‘game_second’.</p>
+
+<p>Ensuite on a étudié l’effets d’interaction : pour observer si certaines caractéristiques ont tendance à interagir entre elles. Les effets d’interaction peuvent fournir des indications sur la manière dont les caractéristiques s’influencent mutuellement dans la prédiction. Les fortes corrélations peuvent indiquer des interactions.</p>
+
+<p><img src="../assets/shap_corr_matrix.png" alt="shap_corr_matrix" /></p>
+
+<p>On constate que les caractéristiques “shot angle change”et “is rebound” ; 
+ont une valeur de 0.97 dans le contexte d’une matrice de corrélation ce qui indique une forte corrélation négative entre ces deux variables. La corrélation négative suggère qu’il y a une relation linéaire inverse entre les deux variables : lorsque l’une augmente, l’autre diminue de manière proportionnelle.</p>
+
+<p>Plus précisément, une valeur de -0.97 indique une corrélation très forte et presque parfaite (en termes de magnitude) entre ces deux variables. Cela signifie que, dans votre ensemble de données, il y a une tendance très claire selon laquelle lorsque le “shot angle change” augmente, la probabilité que cela soit un “rebound” diminue fortement, et vice versa.</p>
+
+<p>Et les caractéristiques ‘prev_result.eventTypeId’ et “is rebound” ont une valeur de -0.75 ce qui suggère une relation inverse relativement forte entre ces deux variables. Cela signifie que, en général, lorsque ‘prev_result.eventTypeId’ augmente, la probabilité d’un “rebound” diminue, et vice versa.</p>
+
+<p>De manière similaire, une corrélation de 0.75 entre ‘prev_result.eventTypeId’ et “shot angle change” suggère une relation positive relativement forte. En d’autres termes, lorsque ‘prev_result.eventTypeId’ augmente, la valeur de “shot angle change” a tendance à augmenter également.</p>
+
+<p>Voici quelques interprétations possibles :</p>
+
+<p>‘prev_result.eventTypeId’ et “is rebound” : Il se peut que le type d’événement précédent ait une influence sur la probabilité qu’un tir soit un “rebound”. Par exemple, si le tir précédent a été arrêté par le gardien de but, il pourrait y avoir moins de chances qu’un tir suivant soit un “rebound”.</p>
+
+<p>‘prev_result.eventTypeId’ et “shot angle change” : La corrélation positive peut indiquer que certaines situations ou types d’événements antérieurs sont associés à des changements d’angle de tir. Par exemple, des événements spécifiques pourraient conduire à des positions de tir différentes, influençant ainsi l’angle du tir suivant.</p>
+
+<p>Pour traiter cela, nous avons envisager d’utiliser une technique de sélection de caractéristiques la régression LASSO (L1 regularization) qui favorise la sparsité en poussant certains coefficients vers zéro :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Fit a LASSO regression model
+</span><span class="n">lasso_model</span> <span class="o">=</span> <span class="nc">Lasso</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>  
+<span class="n">lasso_model</span><span class="p">.</span><span class="nf">fit</span><span class="p">(</span><span class="n">X_train_resampled</span><span class="p">,</span> <span class="n">y_train_resampled</span><span class="p">)</span>
+<span class="c1"># Get selected features
+</span><span class="n">selected_features</span> <span class="o">=</span> <span class="n">X_train_resampled</span><span class="p">.</span><span class="n">columns</span><span class="p">[</span><span class="n">lasso_model</span><span class="p">.</span><span class="n">coef_</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+<span class="c1"># Use only selected features
+</span><span class="n">X_train_lasso</span> <span class="o">=</span> <span class="n">X_train_resampled</span><span class="p">[</span><span class="n">selected_features</span><span class="p">]</span>
+<span class="n">X_val_lasso</span> <span class="o">=</span> <span class="n">X_val_loo</span><span class="p">[</span><span class="n">selected_features</span><span class="p">]</span>
+<span class="n">X_train_lasso</span>
+</code></pre></div></div>
+
+<h2 id="partie-6---on-a-essayé-de-faire-de-notre-mieux-avec-des-nouveaux-modèles-1">Partie 6 - On a essayé de faire de notre mieux avec des nouveaux modèles</h2>
+
+<h3 id="decisiontree-et-random-forest-1">DecisionTree et Random Forest</h3>
+
+<p>Lien vers l’expérience de Decision Tree:</p>
+
+<p>https://www.comet.com/francis75/nhl-project/c63d0e82d14b4d2c8988f57cf26cf730?experiment-tab=panels&amp;showOutliers=true&amp;smoothing=0&amp;xAxis=wall</p>
+
+<p>Lien vers Random Forrest:</p>
+
+<p>https://www.comet.com/francis75/nhl-project/f2d417d4484b4515b690f6a150862a03?experiment-tab=panels&amp;showOutliers=true&amp;smoothing=0&amp;xAxis=wall</p>
+
+<p>Pour les deux modèles, nous avons effectué une validation croisée sur 5 “fold” et stratifiée afin d’avoir autant d’échantillons de buts dans les “fold” de validation. Nous avons également fait une recherche d’hyperparamètres.</p>
+
+<p>Pour Decision Tree voici les paramètres utilisés:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="sh">'</span><span class="s">smote_tomek__sampling_strategy</span><span class="sh">'</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>  <span class="c1"># Different ratios of minority to majority class
+</span>   <span class="sh">'</span><span class="s">classifier__max_depth</span><span class="sh">'</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span>  <span class="c1"># Maximum depth of the tree
+</span>   <span class="sh">'</span><span class="s">classifier__min_samples_split</span><span class="sh">'</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>  <span class="c1"># Minimum number of samples required to split an internal node
+</span>   <span class="sh">'</span><span class="s">classifier__min_samples_leaf</span><span class="sh">'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>  <span class="c1"># Minimum number of samples required to be at a leaf node
+</span><span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>Pour Random Forrest:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Parameter grid for GridSearchCV
+</span><span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="sh">'</span><span class="s">randomforestclassifier__n_estimators</span><span class="sh">'</span><span class="p">:</span> <span class="p">[</span><span class="mi">50</span><span class="p">],</span>  <span class="c1"># Number of trees in the forest
+</span>   <span class="sh">'</span><span class="s">randomforestclassifier__max_depth</span><span class="sh">'</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="bp">None</span><span class="p">],</span>  <span class="c1"># Maximum depth of the trees
+</span>   <span class="sh">'</span><span class="s">randomforestclassifier__min_samples_leaf</span><span class="sh">'</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>  <span class="c1"># Minimum number of samples required at a leaf node
+</span>   <span class="sh">'</span><span class="s">randomforestclassifier__class_weight</span><span class="sh">'</span><span class="p">:</span> <span class="p">[</span><span class="sh">'</span><span class="s">balanced</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">balanced_subsample</span><span class="sh">'</span><span class="p">]</span>  <span class="c1"># Class weights
+</span><span class="p">}</span>
+
+</code></pre></div></div>
+
+<p><strong>Nettoyage et préparations des données</strong></p>
+
+<p>Nous avons imputés les données avec la medianne pour les données numériques et la données la plus fréquente pour les données catégoriques.</p>
+
+<p>Ensuite, pour les données catégoriques, le codeur cible TargetEncoder de la librairie category_encoder est utiilisé avec un smoothing de 20. 
+La technique d’échantillonnage SMOTE-Tomek sont appliqués à l’intérieur de chaque “fold” du processus de validation croisée, y compris à la fois les parties d’entraînement et de validation à l’intérieur de ce “fold”. Cependant, ils ne sont pas appliqués à l’ensemble du jeu de données en une seule fois. Ceci est une distinction importante pour éviter toute fuite de données.</p>
+
+<p>Dans le contexte de “GridSearchCV” avec un pipeline dans scikit-learn, chaque fold de la validation croisée est traité comme un processus d’entraînement et de validation distinct. Les étapes du pipeline (y compris le codage de la cible et l’échantillonnage SMOTE-Tomek) ne sont appliquées qu’à la partie d’entraînement de chaque fold. Ensuite, la partie de validation est transformée (mais pas ajustée) avec le codeur, et aucune échantillonnage n’est effectuée sur les données de validation (car l’échantillonnage n’est généralement pas effectué sur les données de validation/test).</p>
+
+<p>Voici ce qui se passe dans chaque fold de la validation croisée :</p>
+
+<ol>
+  <li>
+    <p><strong>Partie d’Entraînement du Fold</strong>: Le codeur cible est ajusté sur la partie d’entraînement, puis utilisé pour transformer les données d’entraînement. Ensuite, la technique SMOTE-Tomek est appliquée aux données d’entraînement encodées. Le modèle est entraîné sur ces données encodées et échantillonnées.</p>
+  </li>
+  <li>
+    <p><strong>Partie de Validation du Fold</strong>: Le même codeur cible (ajusté sur la partie d’entraînement) est utilisé pour transformer la partie de validation. La technique SMOTE-Tomek n’est pas appliquée aux données de validation. Le modèle est ensuite évalué sur ces données de validation transformées.</p>
+  </li>
+</ol>
+
+<p>En procédant ainsi, le pipeline garantit que les données de validation restent invisibles et ne sont pas utilisées dans le processus d’ajustement du codeur ni de la technique SMOTE-Tomek, évitant ainsi toute fuite de données. C’est une pratique standard et recommandée lors de l’utilisation de pipelines avec des étapes de prétraitement dans scikit-learn.</p>
+
+<p><strong>Résultats</strong>
+Nous avons obtenus de très mauvais résultats pour Decision Tree. 
+Mais Random Forrest semble avoir mieux performer. 
+Mettre images ici</p>
+
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <p>9acdaf782465def919acece561c245176ff86683</p>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<p>Références :</p>
+<ul>
+  <li>
+    <p><a href="https://notebook.community/minesh1291/MachineLearning/xgboost/feature_importance_v1">https://notebook.community/minesh1291/MachineLearning/xgboost/feature_importance_v1</a>;</p>
+  </li>
+  <li>
+    <p><a href="https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgboost-with-codes-python/">https://www.analyticsvidhya.com/blog/2016/03/complete-guide-parameter-tuning-xgboost-with-codes-python/</a>;</p>
+  </li>
+  <li>
+    <p><a href="https://xgboost.readthedocs.io/en/stable/tutorials/categorical.html">https://xgboost.readthedocs.io/en/stable/tutorials/categorical.html</a>;</p>
+  </li>
+</ul>
+
+</div>
+
+
+
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script src='/public/js/script.js'></script>
+  </body>
+</html>
