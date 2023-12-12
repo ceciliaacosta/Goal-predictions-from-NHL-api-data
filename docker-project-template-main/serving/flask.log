@@ -1,0 +1,16 @@
+INFO:werkzeug:127.0.0.1 - - [08/Dec/2023 01:24:24] "[33mGET / HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [08/Dec/2023 01:24:24] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [08/Dec/2023 01:24:42] "[33mGET / HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [08/Dec/2023 01:25:36] "[33mGET / HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [08/Dec/2023 01:25:36] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [08/Dec/2023 01:25:58] "[31m[1mGET /predict HTTP/1.1[0m" 405 -
+INFO:werkzeug:127.0.0.1 - - [10/Dec/2023 23:31:56] "GET /logs HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Dec/2023 23:31:58] "GET /logs HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Dec/2023 23:32:00] "GET /logs HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Dec/2023 23:32:01] "GET /logs HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Dec/2023 23:32:02] "GET /logs HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Dec/2023 23:32:03] "GET /logs HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Dec/2023 23:32:04] "GET /logs HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [10/Dec/2023 23:32:05] "GET /logs HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [12/Dec/2023 00:19:50] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [12/Dec/2023 00:19:59] "[31m[1mGET /predict HTTP/1.1[0m" 405 -
