@@ -1,3 +1,2 @@
-#!/bin/bash
-
-echo "TODO: fill in the docker build command"
+#Docker builf command 
+docker build -t hockey-app -f Dockerfile.serving .
