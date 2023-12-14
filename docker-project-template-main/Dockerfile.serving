@@ -24,10 +24,10 @@ EXPOSE 8050
 # TODO: specify default command - this is not required because you can always specify the command
 # either with the docker run command or in the docker-compose file
 # Define environment variable
-ENV COMET_API_KEY="eeuSdrSn1FqEQ6e7jtLRmlnFt"
+ENV COMET_API_KEY=${COMET_API_KEY} 
 
 # Run app.py when the container launches
 CMD ["python", "app.py"]
 
 #Run the app on port 8050 by typing this in your terminal, will be in the run.sh 
-# docker run -p 8050:8050 -e COMET_API_KEY="eeuSdrSn1FqEQ6e7jtLRmlnFt" hockey-app
+# docker run -p 8050:8050 -e COMET_API_KEY=${COMET_API_KEY} hockey-app
