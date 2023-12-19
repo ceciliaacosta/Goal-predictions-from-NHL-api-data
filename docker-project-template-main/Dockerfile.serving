@@ -1,17 +1,27 @@
 # To build a container, you will use the docker build command in the build.sh
 # docker build -t <hockey-app> -f Dockerfile.serving .
 
-# https://docs.docker.com/engine/reference/builder/#from
-# You shouldn't need to change this
 FROM python:3.7
 
 # https://docs.docker.com/engine/reference/builder/#workdir
 # Create and cd into /code as your working directory
 WORKDIR /code
 
+# Define environment variable
+ENV COMET_API_KEY=${COMET_API_KEY} 
+FROM python:3.7
+ARG COMET_API_KEY
+
 # TODO: add code, optionally a default model if you want 
+
+ADD requirements.txt .
+ADD app.py .
+
+#Here "ADD" all the models and data for the dockerfile 
+
 # Copy the current directory contents into the container at /code
 COPY . /code
+
 
 # TODO: install libs
 # Install any needed packages specified in requirements.txt
@@ -30,4 +40,4 @@ ENV COMET_API_KEY=${COMET_API_KEY}
 CMD ["python", "app.py"]
 
 #Run the app on port 8050 by typing this in your terminal, will be in the run.sh 
-# docker run -p 8050:8050 -e COMET_API_KEY="${COMET_API_KEY}" hockey-app
+# docker run -p 8050:8050 -e COMET_API_KEY=${COMET_API_KEY} hockey-app
