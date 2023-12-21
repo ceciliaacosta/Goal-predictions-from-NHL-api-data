@@ -29,7 +29,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # TODO: expose ports (or do this in docker-compose)
 # Expose the port the app runs on
-EXPOSE 8050
+EXPOSE 8080
 
 # TODO: specify default command - this is not required because you can always specify the command
 # either with the docker run command or in the docker-compose file
@@ -40,4 +40,4 @@ ENV COMET_API_KEY=${COMET_API_KEY}
 CMD ["python", "app.py"]
 
 #Run the app on port 8050 by typing this in your terminal, will be in the run.sh 
-# docker run -p 8050:8050 -e COMET_API_KEY=${COMET_API_KEY} hockey-app
+# docker run -p 8080:8080 -e COMET_API_KEY=${COMET_API_KEY} hockey-app
