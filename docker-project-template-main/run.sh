@@ -1,5 +1,2 @@
-# Retrieve the Comet API key from the local machine environment variable
-COMET_API_KEY=${COMET_API_KEY}
-
 # Run the Docker container with the dynamically retrieved API key
-docker run -p 8050:8050 -e COMET_API_KEY="${COMET_API_KEY}" hockey-app
+docker run -it --expose 127.0.0.1:8050:8050/tcp --env COMET_API_KEY="${COMET_API_KEY}" ift6758/serving:1.0.0
