@@ -10,7 +10,7 @@ services:
 #        ARG: <ARG>
     image: ift6758/serving:hockey-app
     ports:
-      - 8050:8050
+      - 8080:8080
     environment:
 #      DOCKER_ENV_VAR = ${LOCAL_ENV_VAR}
       - COMET_API_KEY=${COMET_API_KEY}
