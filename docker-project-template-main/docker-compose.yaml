@@ -5,10 +5,10 @@ services:
   serving:
     build:
       context: ./
-      dockerfile: ./Dockerfile.serving
+      dockerfile: ./dockerfile.serving
 #      args:
 #        ARG: <ARG>
-    image: ift6758/serving:hockey-app
+    image: ift6758/serving:model-serving
     ports:
       - 8080:8080
     environment:
@@ -18,10 +18,10 @@ services:
   streamlit:
     build:
       context: ./
-      dockerfile: ./Dockerfile.streamlit
+      dockerfile: ./dockerfile.streamlit
 ##      args:
 ##        ARG: <ARG>
-    image: ift6758/streamlit:hockeyapp
+    image: ift6758/streamlit:model-serving_1
     ports:
       - 8850:8850
     environment:
