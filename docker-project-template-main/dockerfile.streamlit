@@ -25,4 +25,4 @@ EXPOSE 8850
 # TODO: specify default command - this is not required because you can always specify the command
 # either with the docker run command or in the docker-compose file
 
-ENTRYPOINT ["streamlit", "run", "streamlit.py", "--server.port=8850", "--server.address=0.0.0.0"]
+ENTRYPOINT ["streamlit", "run", "streamlit_app.py", "--server.port=8850", "--server.address=0.0.0.0"]
