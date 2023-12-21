@@ -3,7 +3,6 @@
 #
 #   docker build -t <IMAGE TAG> -f Dockerfile.serving .
 #   docker build -t <IMAGE TAG> -f Dockerfile.jupyter .
-#
 
 
 # https://docs.docker.com/engine/reference/builder/#from
@@ -18,6 +17,7 @@ WORKDIR /code
 ADD streamlit_app.py .
 ADD requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install streamlit
 
 # TODO: expose ports (or do this in docker-compose)
 EXPOSE 8850
