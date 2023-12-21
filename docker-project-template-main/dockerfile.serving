@@ -1,5 +1,5 @@
 # To build a container, you will use the docker build command in the build.sh
-# docker build -t <hockey-app> -f Dockerfile.serving .
+#docker build -t <hockey-app> -f dockerfile.serving .
 
 FROM python:3.7
 
@@ -16,6 +16,9 @@ ARG COMET_API_KEY
 
 ADD requirements.txt .
 ADD app.py .
+ADD client.py .
+ADD functions.py .
+ADD client_serving.py .
 
 #Here "ADD" all the models and data for the dockerfile 
 
@@ -37,7 +40,7 @@ EXPOSE 8080
 ENV COMET_API_KEY=${COMET_API_KEY} 
 
 # Run app.py when the container launches
-CMD ["python", "app.py"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "app:app"]
 
 #Run the app on port 8050 by typing this in your terminal, will be in the run.sh 
-# docker run -p 8080:8080 -e COMET_API_KEY=${COMET_API_KEY} hockey-app
+#docker run -p 8080:8080 -e COMET_API_KEY=${COMET_API_KEY} hockey-app
