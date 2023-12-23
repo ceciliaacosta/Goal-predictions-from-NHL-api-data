@@ -7,3 +7,4 @@ ift6758.egg-info/top_level.txt
 ift6758/client/__init__.py
 ift6758/client/serving_client.py
 ift6758/data/__init__.py
+ift6758/data/client.py
