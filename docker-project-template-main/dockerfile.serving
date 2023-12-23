@@ -9,30 +9,33 @@ WORKDIR /code
 
 # Define environment variable
 ENV COMET_API_KEY=${COMET_API_KEY} 
-FROM python:3.7
 ARG COMET_API_KEY
 
 # TODO: add code, optionally a default model if you want 
-
-ADD requirements.txt .
-ADD app.py .
-ADD client.py .
-ADD functions.py .
-ADD client_serving.py .
-
 #Here "ADD" all the models and data for the dockerfile 
+ADD requirements.txt .
+ADD serving/app.py .
+ADD ift6758/ift6758/data/client.py .
+ADD api_data.py .
+ADD ift6758/ift6758/client/serving_client.py .
+
 
 # Copy the current directory contents into the container at /code
 COPY . /code
-
+COPY ./ift6758 /code/ift6758
 
 # TODO: install libs
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
+RUN   pip install -e ift6758
+# Exemple de création d'un répertoire pour les modèles
+RUN mkdir -p /app/models
 
+# Définir les permissions (si nécessaire)
+RUN chmod 755 /app/models
 # TODO: expose ports (or do this in docker-compose)
 # Expose the port the app runs on
-EXPOSE 8080
+EXPOSE 5050
 
 # TODO: specify default command - this is not required because you can always specify the command
 # either with the docker run command or in the docker-compose file
@@ -40,7 +43,7 @@ EXPOSE 8080
 ENV COMET_API_KEY=${COMET_API_KEY} 
 
 # Run app.py when the container launches
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5050", "app:app"]
 
 #Run the app on port 8050 by typing this in your terminal, will be in the run.sh 
 #docker run -p 8080:8080 -e COMET_API_KEY=${COMET_API_KEY} hockey-app
