@@ -12,17 +12,21 @@ FROM python:3.7
 # https://docs.docker.com/engine/reference/builder/#workdir
 # Create and cd into /code as your working directory
 WORKDIR /code
+COPY . /code
+
+COPY ./ift6758 /code/ift6758
 
 # TODO: install libs
 ADD streamlit_app.py .
 ADD requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install streamlit
+RUN pip install -e ift6758
 
 # TODO: expose ports (or do this in docker-compose)
-EXPOSE 8850
+EXPOSE 8050
 
 # TODO: specify default command - this is not required because you can always specify the command
 # either with the docker run command or in the docker-compose file
 
-ENTRYPOINT ["streamlit", "run", "streamlit_app.py", "--server.port=8850", "--server.address=0.0.0.0"]
+ENTRYPOINT ["streamlit", "run", "streamlit_app.py", "--server.port=8050", "--server.address=0.0.0.0"]
