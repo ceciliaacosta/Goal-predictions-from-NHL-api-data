@@ -18,12 +18,11 @@ from flask import Flask, jsonify, request, abort
 import requests
 import sklearn
 import pandas as pd
-import ift6758
 import joblib
 from joblib import  load
 
-api = API()
-
+comet_api_key = os.getenv('COMET_API_KEY')
+api = API(api_key=comet_api_key)
 
 
 LOG_FILE = os.environ.get("FLASK_LOG", "flask.log")
@@ -98,15 +97,20 @@ def download_registry_model():
         # Retrieve the model by name
         model = api.get_model(workspace=workspace, model_name=model_name)
 
-        # Specify the local path where the model file should be
-        local_model_path = f"{model_name}.joblib"
+        MODEL_DIR = "/app/models"  # Assurez-vous que ce répertoire correspond au volume Docker monté
+        #local_model_path = os.path.join(MODEL_DIR, f"{model_name}.joblib")
 
+        # # Specify the local path where the model file should be
+        # local_model_path = f"{model_name}.joblib"
+        joblib_filename = f"{model_name.capitalize()}.joblib"  # Exemple: 'Regression1.joblib'
+        local_model_path = os.path.join(MODEL_DIR, joblib_filename)
         # Check if the model file exists locally
         exists_locally = os.path.isfile(local_model_path)
         # Check if the model is already downloaded
         if exists_locally:
             # If yes, load that model and write to the log about the model change
             try:
+
                 app.model=load(local_model_path) 
                 app.logger.info(f"Loaded model {model_name} version {version}")
             except Exception as e:
@@ -114,7 +118,7 @@ def download_registry_model():
         else:
             # If no, try downloading the model
             try:
-                model.download("1.0.0",".", expand=True)
+                model.download("1.0.0", MODEL_DIR, expand=True)  
                 app.model=load(local_model_path) 
             except Exception as e:
                 app.logger.error(f"Error downloading model {model_name} version {version}: {str(e)}")
@@ -156,6 +160,6 @@ def predict():
     app.logger.info(response)
     return jsonify(response)  # response must be json serializable!
 
-if __name__ == '__main__':
-   app.run(port=8080)
+# if __name__ == '__main__':
+#     app.run(port=5050)
    
